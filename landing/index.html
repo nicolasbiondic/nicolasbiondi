@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nicolás Biondi — Ecommerce | IA | Crypto</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <meta name="description" content="Ingeniero y emprendedor con más de 10 años de experiencia en comercio electrónico, retail tecnológico y desarrollo de negocios digitales." />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="assets/css/font-awesome/css/all.min.css" />
+
+  <!-- Landing CSS -->
+  <link rel="stylesheet" href="assets/css/landing.css" />
+</head>
+<body>
+
+  <!-- Fluid WebGL background canvas -->
+  <canvas id="fluid-canvas"
+    data-fluid-bg="#02030F"
+    data-sim-resol="128"
+    data-quality="512"
+    data-density="0.985"
+    data-vorticity="30"
+    data-splat-radius="0.5"
+    data-transparent="false">
+  </canvas>
+
+  <!-- Blurred color blobs (purely decorative, CSS-driven) -->
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- Animated dashed circles decoration -->
+  <div class="deco-circles" aria-hidden="true">
+    <div class="deco-circle deco-circle-1"></div>
+    <div class="deco-circle deco-circle-2"></div>
+    <div class="deco-circle deco-circle-3"></div>
+  </div>
+
+  <!-- Dot grid decoration (bottom-left, like reference) -->
+  <div class="dot-grid" aria-hidden="true"></div>
+
+  <!-- Custom cursor -->
+  <div id="ball"></div>
+
+  <!-- Main wrapper -->
+  <div class="nicol">
+
+    <!-- Card -->
+    <div class="card">
+
+      <!-- Avatar -->
+      <div class="avatar-outer">
+        <div class="avatar-wrap">
+          <img src="assets/img/profile.jpg" alt="Nicolás Biondi" />
+        </div>
+      </div>
+
+      <!-- Name -->
+      <h1 class="name">Nicolás Biondi</h1>
+      <p class="tagline">Ecommerce &nbsp;·&nbsp; IA &nbsp;·&nbsp; Crypto</p>
+
+      <!-- Tags -->
+      <div class="tags">
+        <span class="tag">Ecommerce</span>
+        <span class="tag">Inteligencia Artificial</span>
+        <span class="tag">Crypto / Web3</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Fotografía</span>
+        <span class="tag">+10 años</span>
+      </div>
+
+      <!-- Bio -->
+      <div class="bio">
+        Ingeniero y emprendedor con más de 10 años de experiencia en comercio electrónico,
+        retail tecnológico y desarrollo de negocios digitales. Mi pasión por la fotografía
+        y la tecnología me llevaron a fundar <strong>LENZ Photo Store</strong>, hoy uno de
+        los ecommerces especializados más relevantes del sector audiovisual en Perú.
+        <br><br>
+        Lidero un talentoso equipo con el que hemos escalado un ecommerce 100% funcional,
+        gestionando +500 SKUs y más de 20 canales de venta entre formatos tradicionales y
+        digitales. Hemos construido una comunidad de <strong>+35,000 seguidores en Instagram</strong>
+        y superado las <strong>10,000,000 visualizaciones en TikTok</strong>.
+        <br><br>
+        Exploro activamente automatización de procesos con Node.js, inteligencia artificial
+        y nuevas arquitecturas digitales. Me interesan profundamente el Web3, las
+        criptomonedas y la IA como herramientas prácticas para construir organizaciones
+        más eficientes y escalables.
+      </div>
+
+      <!-- Social / links -->
+      <div class="social-links">
+
+        <a class="social-btn"
+           href="https://instagram.com/lenzphotostore"
+           target="_blank" rel="noopener">
+          <i class="fab fa-instagram"></i>
+          @lenzphotostore
+        </a>
+
+        <a class="social-btn"
+           href="https://instagram.com/bomberos_sl10"
+           target="_blank" rel="noopener">
+          <i class="fab fa-instagram"></i>
+          @bomberos_sl10
+        </a>
+
+        <a class="social-btn"
+           href="https://tiktok.com/@lenzphotostore"
+           target="_blank" rel="noopener">
+          <i class="fab fa-tiktok"></i>
+          TikTok
+        </a>
+
+        <a class="social-btn"
+           href="https://linkedin.com/in/nicolasbiondi"
+           target="_blank" rel="noopener">
+          <i class="fab fa-linkedin-in"></i>
+          LinkedIn
+        </a>
+
+        <a class="social-btn"
+           href="mailto:hola@nicolasbiondi.com">
+          <i class="fas fa-envelope"></i>
+          Contacto
+        </a>
+
+      </div>
+
+      <p class="contact-cta">
+        ¿Hablamos sobre negocios, tecnología o ideas que valgan la pena ejecutar?<br>
+        <a href="mailto:hola@nicolasbiondi.com">hola@nicolasbiondi.com</a>
+      </p>
+
+    </div><!-- /card -->
+
+    <!-- CLIC button — centered bottom, triggers fluid burst -->
+    <button class="nicol-boom" title="¡Clic!">
+      <span class="boom-arc"></span>
+      <span class="boom-label">CLIC</span>
+    </button>
+
+  </div><!-- /nicol -->
+
+  <!-- Scripts -->
+  <script src="assets/js/vendor/gsap.min.js"></script>
+  <script src="assets/js/fluid-animation.js"></script>
+  <script src="assets/js/cursor.js"></script>
+
+</body>
+</html>
