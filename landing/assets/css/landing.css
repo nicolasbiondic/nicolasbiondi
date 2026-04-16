@@ -124,17 +124,20 @@ a:hover { color: #fff; }
   border-radius: 1.25em;
   padding: 3em 3.5em;
   max-width: 640px;
+  max-height: 92vh;
   width: 90%;
   text-align: center;
   box-shadow: 0 8px 48px rgba(0,0,0,0.5);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
 }
+
+.card::-webkit-scrollbar { width: 4px; }
+.card::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+.card::-webkit-scrollbar-track { background: transparent; }
 
 /* --- Avatar -------------------------------------------------- */
-@keyframes halo-pulse {
-  0%, 100% { box-shadow: 0 0 14px 3px rgba(0,229,255,0.35), 0 0 32px 6px rgba(0,229,255,0.12); }
-  50%       { box-shadow: 0 0 22px 6px rgba(0,229,255,0.55), 0 0 48px 12px rgba(0,229,255,0.2); }
-}
-
 .avatar-outer {
   margin: 0 auto 1.25em;
 }
@@ -145,8 +148,8 @@ a:hover { color: #fff; }
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto;
-  border: 2px solid rgba(0,229,255,0.6);
-  animation: halo-pulse 2.8s ease-in-out infinite;
+  border: 2px solid rgba(0,229,255,0.5);
+  box-shadow: 0 0 12px rgba(0,229,255,0.25);
 }
 
 .avatar-wrap img {
@@ -175,6 +178,17 @@ a:hover { color: #fff; }
   line-height: 1.2;
   letter-spacing: 0.02em;
   margin-bottom: 0.2em;
+  display: inline-block;
+  /* background-gradient underline — same technique as the Nicol theme */
+  background: linear-gradient(var(--accent), var(--accent));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 2px;
+  transition: background-size 0.4s ease;
+}
+
+.name.underlined {
+  background-size: 100% 2px;
 }
 
 .tagline {
@@ -192,8 +206,8 @@ a:hover { color: #fff; }
   color: var(--text);
   line-height: 1.7;
   margin-bottom: 1.8em;
-  max-height: 140px;
-  overflow-y: auto;
+  max-height: none;
+  overflow-y: visible;
   scrollbar-width: thin;
   scrollbar-color: var(--accent) transparent;
   padding-right: 0.5em;
@@ -227,13 +241,23 @@ a:hover { color: #fff; }
   text-transform: uppercase;
 }
 
+/* --- Links section label ------------------------------------- */
+.links-label {
+  font-size: 0.62em;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin: 0 0 0.6em;
+}
+
 /* --- Social links -------------------------------------------- */
 .social-links {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75em;
   justify-content: center;
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
 }
 
 .social-btn {
@@ -338,14 +362,14 @@ a:hover { color: #fff; }
 .deco-circle {
   position: absolute;
   border-radius: 50%;
-  border: 2px dashed rgba(255,255,255,0.12);
+  border: 2px dashed rgba(255,255,255,0.45);
 }
 
 /* Top-right large circle — like the reference */
 .deco-circle-1 {
   width: 520px; height: 520px;
   top: -200px; right: -200px;
-  border-color: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.4);
   animation: circle-spin-cw 80s linear infinite;
 }
 
@@ -353,16 +377,15 @@ a:hover { color: #fff; }
 .deco-circle-2 {
   width: 360px; height: 360px;
   bottom: -140px; left: -140px;
-  border-color: rgba(0,229,255,0.12);
+  border-color: rgba(0,229,255,0.45);
   animation: circle-spin-ccw 60s linear infinite;
 }
 
 /* Center accent circle — small, subtle */
 .deco-circle-3 {
   width: 220px; height: 220px;
-  top: 50%; left: 15%;
-  transform: translateY(-50%);
-  border-color: rgba(0,229,255,0.08);
+  top: calc(50% - 110px); left: 15%;
+  border-color: rgba(0,229,255,0.35);
   animation: circle-spin-cw 45s linear infinite;
 }
 
@@ -383,7 +406,7 @@ a:hover { color: #fff; }
 /* --- CLIC button — centered bottom --------------------------- */
 .nicol-boom {
   position: absolute;
-  bottom: 2.5em;
+  bottom: 2em;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -392,49 +415,115 @@ a:hover { color: #fff; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4em;
+  gap: 0.5em;
   padding: 0;
-  opacity: 0.7;
-  transition: opacity .25s;
+  opacity: 0.65;
+  transition: opacity .3s;
 }
 
 .nicol-boom:hover { opacity: 1; }
 
-/* Curved arc — top arc like the reference screenshot */
+/* Circle that grows from half to full on hover */
 .boom-arc {
   display: block;
-  width: 36px;
-  height: 18px;
-  border: 1.5px solid rgba(255,255,255,0.5);
-  border-bottom: none;
-  border-radius: 36px 36px 0 0;
-  animation: arc-bounce 2s ease-in-out infinite;
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid rgba(255,255,255,0.55);
+  border-radius: 50%;
+  /* clip bottom half: only top semicircle visible at rest */
+  clip-path: inset(0 0 50% 0);
+  transition: clip-path 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s;
+  animation: arc-float 2.2s ease-in-out infinite;
 }
 
-@keyframes arc-bounce {
+.nicol-boom:hover .boom-arc {
+  clip-path: inset(0 0 0% 0);   /* full circle */
+  border-color: var(--accent);
+  animation-play-state: paused;
+}
+
+@keyframes arc-float {
   0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-4px); }
+  50%       { transform: translateY(-5px); }
 }
 
 .boom-label {
   font-family: var(--font);
-  font-size: 0.65em;
+  font-size: 0.6em;
   font-weight: 600;
   letter-spacing: 0.3em;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.5);
   text-transform: uppercase;
+  transition: color .3s;
 }
 
-/* --- Responsive --------------------------------------------- */
-@media (max-width: 600px) {
+.nicol-boom:hover .boom-label {
+  color: var(--accent);
+}
+
+/* --- Mobile -------------------------------------------------- */
+@media (max-width: 768px) {
+
+  /* No custom cursor on touch */
+  #ball { display: none; }
+  * { cursor: auto !important; }
+
+  /* Card: full-width, natural height, no scroll */
   .card {
-    padding: 2em 1.5em;
+    padding: 1.75em 1.25em 1.5em;
+    max-height: none;
+    overflow-y: visible;
+    width: 92%;
+    border-radius: 1em;
   }
-  .bio { max-height: 120px; }
-  .social-btn { font-size: 0.75em; }
-  .deco-circle-1 { width: 300px; height: 300px; }
-  .deco-circle-2 { width: 200px; height: 200px; }
+
+  /* Hide interest tags entirely */
+  .tags { display: none; }
+
+  /* Smaller avatar */
+  .avatar-wrap { width: 80px; height: 80px; }
+  .avatar-outer { margin-bottom: 1em; }
+
+  /* Tighter title */
+  .name { font-size: clamp(1.4em, 7vw, 2em); margin-bottom: 0.15em; }
+  .tagline { font-size: 0.72em; margin-bottom: 1em; letter-spacing: 0.18em; }
+
+  /* Bio full height, smaller font */
+  .bio {
+    font-size: 0.8em;
+    line-height: 1.6;
+    margin-bottom: 1.2em;
+    padding-right: 0;
+  }
+
+  /* Links tighter */
+  .links-label { margin-top: 0.5em; }
+  .social-links { gap: 0.5em; margin-bottom: 0.75em; }
+  .social-btn { font-size: 0.72em; padding: 0.45em 0.85em; }
+
+  /* Contact CTA */
+  .contact-cta { font-size: 0.7em; margin-top: 0.75em; }
+
+  /* Hide CLIC button and decorative elements on mobile */
+  .nicol-boom { display: none; }
+  .deco-circle-1, .deco-circle-2, .deco-circle-3 { display: none; }
   .dot-grid { display: none; }
+  .bg-blobs { opacity: 0.6; }
+
+  /* Wrapper: centered, scrollable if card overflows */
+  .nicol {
+    align-items: center;
+    padding: 1em 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Disable text selection globally */
+body, .card, .bio, .name, .tagline, .tag, .boom-label {
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Scrollbar / selection */
