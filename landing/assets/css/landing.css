@@ -70,6 +70,18 @@ a:hover { color: #fff; }
   display: block;
 }
 
+/* --- Dot overlay — dark grid of small dots over the fluid ---- */
+.dot-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;          /* fluid=0, dot=1, crt=2, blobs=3, circles=3, nicol=4 */
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.6) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+/* CRT canvas is injected by crt.js at z-index:2 */
+
 /* --- Custom cursor ------------------------------------------- */
 * { cursor: none !important; }
 
@@ -106,7 +118,7 @@ a:hover { color: #fff; }
 .nicol {
   position: fixed;
   inset: 0;
-  z-index: 1;
+  z-index: 4;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -323,7 +335,7 @@ a:hover { color: #fff; }
 .bg-blobs {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: 3;
   pointer-events: none;
   overflow: hidden;
 }
@@ -371,7 +383,7 @@ a:hover { color: #fff; }
 .deco-circles {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: 3;
   pointer-events: none;
   overflow: hidden;
 }
