@@ -959,18 +959,7 @@ function fluid_init() {
 	}
 
 	function generateColor() {
-		/* Cuphead warm palette bias:
-		   60% → reds / oranges / ambers  (hue 0.00–0.18)
-		   25% → deep golds / yellows     (hue 0.10–0.22)
-		   15% → full spectrum accent     (any hue)         */
-		let hue;
-		const r = Math.random();
-		if      (r < 0.60) hue = Math.random() * 0.18;
-		else if (r < 0.85) hue = 0.10 + Math.random() * 0.12;
-		else               hue = Math.random();
-
-		/* Slightly reduced saturation for aged/faded vintage feel */
-		let c = HSVtoRGB(hue, 0.88, 1.0);
+		let c = HSVtoRGB(Math.random(), 1.0, 1.0);
 		c.r *= 0.15; c.g *= 0.15; c.b *= 0.15;
 		return c;
 	}
