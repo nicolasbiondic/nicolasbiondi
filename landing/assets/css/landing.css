@@ -197,7 +197,24 @@ a:hover { color: #fff; }
   color: var(--accent);
   letter-spacing: 0.25em;
   text-transform: uppercase;
+  margin-bottom: 0.75em;
+}
+
+/* --- Stats anchor row ---------------------------------------- */
+.stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  font-size: 0.72em;
+  font-weight: 400;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.06em;
   margin-bottom: 1.4em;
+}
+
+.stats-sep {
+  color: rgba(255,255,255,0.2);
 }
 
 /* --- Bio ----------------------------------------------------- */
