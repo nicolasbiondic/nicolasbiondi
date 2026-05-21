@@ -1,9 +1,12 @@
 /* ================================================================
    LANDING — Nicolás Biondi
-   Basado en el tema Nicol (ThemeForest)
+   Unified typography: Montserrat (geometric sans, Gotham-like)
    ================================================================ */
 
-/* --- Fonts ---------------------------------------------------- */
+/* --- Fonts: Montserrat (unified across site) ----------------- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Legacy Hero font kept as fallback */
 @font-face {
   font-family: 'Hero';
   src: url('fonts/Hero-Regular.woff2') format('woff2'),
@@ -37,7 +40,7 @@
   --title:        #ffffff;
   --accent:       #00E5FF;
   --border:       #525357;
-  --font:         'Hero', sans-serif;
+  --font:         'Montserrat', 'Hero', sans-serif;
 }
 
 /* --- Reset ---------------------------------------------------- */
