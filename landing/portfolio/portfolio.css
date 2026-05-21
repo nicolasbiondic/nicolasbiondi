@@ -1,0 +1,409 @@
+/* ================================================================
+   Portfolio — Nicolás Biondi Fotógrafo
+   Fiel al estilo original de portfoliobox.net:
+   fondo blanco, tipografía limpia, galería horizontal
+   ================================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:  #1a1a1a;
+  --grey:   #666;
+  --light:  #ccc;
+  --white:  #fff;
+  --nav-h:  64px;
+  --font-body: 'Average', Georgia, serif;
+  --font-ui:   'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-ui);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ── NAV ─────────────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.nav-logo img {
+  height: 32px;
+  width: auto;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--black);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  color: var(--grey);
+  transition: color .2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--black);
+}
+
+/* ── GALLERY — horizontal scroll ────────────────────────────── */
+.gallery {
+  margin-top: var(--nav-h);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: calc(100vh - var(--nav-h) - 48px);
+  padding: 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery::-webkit-scrollbar { height: 4px; }
+.gallery::-webkit-scrollbar-thumb { background: var(--light); border-radius: 2px; }
+
+.gallery-item {
+  flex: 0 0 auto;
+  height: 100%;
+  cursor: pointer;
+  scroll-snap-align: start;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-item img {
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: cover;
+  transition: transform .4s ease;
+  display: block;
+}
+
+.gallery-item:hover img { transform: scale(1.02); }
+
+/* ── LIGHTBOX ────────────────────────────────────────────────── */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox.open { display: flex; }
+
+.lb-img-wrap {
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lb-img-wrap img {
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border: none;
+}
+
+.lb-close, .lb-prev, .lb-next {
+  position: fixed;
+  background: none;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+  padding: 0.5rem;
+  opacity: 0.7;
+  transition: opacity .2s;
+  z-index: 201;
+}
+
+.lb-close:hover, .lb-prev:hover, .lb-next:hover { opacity: 1; }
+
+.lb-close { top: 1.5rem; right: 2rem; font-size: 1.5rem; }
+.lb-prev  { left:  1.5rem; top: 50%; transform: translateY(-50%); font-size: 3rem; }
+.lb-next  { right: 1.5rem; top: 50%; transform: translateY(-50%); font-size: 3rem; }
+
+/* ── ABOUT ───────────────────────────────────────────────────── */
+.about-page {
+  margin-top: var(--nav-h);
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+  padding: 4rem 3rem;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-img {
+  flex: 0 0 360px;
+}
+
+.about-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.about-text {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #333;
+}
+
+.about-text p { margin-bottom: 1.25em; }
+
+/* ── PROJECTS ────────────────────────────────────────────────── */
+.projects-page {
+  margin-top: var(--nav-h);
+  flex: 1;
+  padding: 3rem 2.5rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.project-card img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+
+.project-card:hover img { transform: scale(1.04); }
+
+.project-card figcaption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.55));
+  color: var(--white);
+  padding: 2rem 1.25rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── CONTACT ─────────────────────────────────────────────────── */
+.contact-page {
+  margin-top: var(--nav-h);
+  flex: 1;
+  display: flex;
+  gap: 5rem;
+  align-items: flex-start;
+  padding: 4rem 3rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-info h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.contact-role {
+  color: var(--grey);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.contact-info a {
+  color: var(--grey);
+  font-size: 0.9rem;
+  transition: color .2s;
+}
+
+.contact-info a:hover { color: var(--black); }
+
+.contact-form { flex: 1; }
+
+.form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--grey);
+  text-transform: uppercase;
+}
+
+.form-group label span { color: #c00; }
+
+.form-group input,
+.form-group textarea {
+  border: 1px solid var(--light);
+  border-radius: 2px;
+  padding: 0.65rem 0.75rem;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  color: var(--black);
+  outline: none;
+  transition: border-color .2s;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--black);
+}
+
+.btn-send {
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 2.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.btn-send:hover { background: #333; }
+
+.form-status {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--grey);
+}
+
+.form-status.success { color: #2a9d2a; }
+.form-status.error   { color: #c00; }
+
+/* ── SOCIAL FOOTER ───────────────────────────────────────────── */
+.social-footer {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0 2.5rem;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.social-footer a {
+  color: var(--grey);
+  transition: color .2s;
+  display: flex;
+  align-items: center;
+}
+
+.social-footer a:hover { color: var(--black); }
+
+.social-footer svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .nav { padding: 0 1.25rem; }
+
+  .nav-toggle { display: block; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--nav-h);
+    left: 0; right: 0;
+    background: var(--white);
+    flex-direction: column;
+    gap: 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding: 0.5rem 0;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links li { width: 100%; }
+
+  .nav-links a {
+    display: block;
+    padding: 0.85rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .gallery {
+    height: calc(100svh - var(--nav-h) - 48px);
+  }
+
+  .about-page {
+    flex-direction: column;
+    padding: 2rem 1.25rem;
+    gap: 2rem;
+  }
+
+  .about-img { flex: 0 0 auto; }
+
+  .contact-page {
+    flex-direction: column;
+    padding: 2rem 1.25rem;
+    gap: 2rem;
+  }
+
+  .projects-page { padding: 2rem 1.25rem; }
+}
