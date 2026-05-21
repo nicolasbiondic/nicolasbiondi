@@ -5,56 +5,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contacto — Nicolás Biondi Fotógrafo</title>
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="portfolio.css" />
 </head>
 <body>
 
-  <nav class="nav">
-    <a class="nav-logo" href="/portfolio/"><img src="img/logo.png" alt="Nicolás Biondi" /></a>
-    <button class="nav-toggle" aria-label="Menú">&#9776;</button>
-    <ul class="nav-links" id="nav-links">
+  <a class="skip-link" href="#main">Ir al contenido</a>
+
+  <nav class="nav" id="nav">
+    <a class="nav-logo" href="/portfolio/" aria-label="Nicolás Biondi — Inicio">
+      <img src="img/logo.png" alt="Nicolás Biondi" width="120" height="28" />
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+      <span class="nav-toggle-icon" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+    <ul class="nav-links" id="nav-links" role="list">
       <li><a href="/portfolio/">Portafolio</a></li>
       <li><a href="/portfolio/about.html">Acerca de mí</a></li>
       <li><a href="/portfolio/proyectos.html">Proyectos</a></li>
       <li><a href="https://www.instagram.com/nicolasbiondi" target="_blank" rel="noopener">Instagram</a></li>
-      <li><a href="/portfolio/contacto.html" class="active">Contacto</a></li>
+      <li><a href="/portfolio/contacto.html" class="active" aria-current="page">Contacto</a></li>
     </ul>
   </nav>
 
-  <main class="contact-page">
+  <main class="contact-page" id="main">
     <div class="contact-info">
       <h1>Nicolás Biondi</h1>
       <p class="contact-role">Fotógrafo</p>
       <p><a href="mailto:nicolas@lenz.pe">nicolas@lenz.pe</a></p>
     </div>
 
-    <form class="contact-form" id="contact-form" action="https://formspree.io/f/placeholder" method="POST">
+    <form class="contact-form" id="contact-form" action="https://formspree.io/f/placeholder" method="POST" novalidate>
       <div class="form-group">
-        <label for="mensaje">Mensaje <span>*</span></label>
-        <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Tu mensaje..."></textarea>
+        <label for="mensaje">Mensaje <span aria-hidden="true">*</span></label>
+        <textarea
+          id="mensaje"
+          name="mensaje"
+          rows="5"
+          required
+          autocomplete="off"
+          placeholder="¿En qué puedo ayudarte…?"
+          aria-required="true"
+        ></textarea>
       </div>
       <div class="form-group">
-        <label for="nombre">Nombre <span>*</span></label>
-        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre" />
+        <label for="nombre">Nombre <span aria-hidden="true">*</span></label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          required
+          autocomplete="name"
+          placeholder="Tu nombre…"
+          aria-required="true"
+          spellcheck="false"
+        />
       </div>
       <div class="form-group">
-        <label for="email">Email <span>*</span></label>
-        <input type="email" id="email" name="email" required placeholder="tu@email.com" />
+        <label for="email">Email <span aria-hidden="true">*</span></label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          autocomplete="email"
+          placeholder="tu@email.com"
+          aria-required="true"
+          spellcheck="false"
+          inputmode="email"
+        />
       </div>
-      <button type="submit" class="btn-send">ENVIAR</button>
-      <p class="form-status" id="form-status"></p>
+      <button type="submit" class="btn-send">Enviar mensaje</button>
+      <p
+        class="form-status"
+        id="form-status"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      ></p>
     </form>
   </main>
 
-  <footer class="social-footer">
-    <a href="https://www.facebook.com/nicolasbiondifoto" target="_blank" rel="noopener" aria-label="Facebook">
-      <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+  <footer class="social-footer" role="contentinfo">
+    <a href="https://www.facebook.com/nicolasbiondifoto" target="_blank" rel="noopener" aria-label="Facebook de Nicolás Biondi">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
     </a>
-    <a href="https://www.instagram.com/nicolasbiondi" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    <a href="https://www.instagram.com/nicolasbiondi" target="_blank" rel="noopener" aria-label="Instagram de Nicolás Biondi">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
     </a>
-    <a href="https://www.linkedin.com/in/nicol%C3%A1s-biondi-97098210b/" target="_blank" rel="noopener" aria-label="LinkedIn">
-      <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    <a href="https://www.linkedin.com/in/nicol%C3%A1s-biondi-97098210b/" target="_blank" rel="noopener" aria-label="LinkedIn de Nicolás Biondi">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
     </a>
   </footer>
 

@@ -4,61 +4,71 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Acerca de mí — Nicolás Biondi Fotógrafo</title>
+  <meta name="description" content="Nicolás Biondi, fotógrafo peruano. Estudió en el Museo de Arte de Lima. Ha trabajado con Hilton, Radisson, Claro y más." />
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="portfolio.css" />
 </head>
 <body>
 
-  <nav class="nav">
-    <a class="nav-logo" href="/portfolio/"><img src="img/logo.png" alt="Nicolás Biondi" /></a>
-    <button class="nav-toggle" aria-label="Menú">&#9776;</button>
-    <ul class="nav-links" id="nav-links">
+  <a class="skip-link" href="#main">Ir al contenido</a>
+
+  <nav class="nav" id="nav">
+    <a class="nav-logo" href="/portfolio/" aria-label="Nicolás Biondi — Inicio">
+      <img src="img/logo.png" alt="Nicolás Biondi" width="120" height="28" />
+    </a>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+      <span class="nav-toggle-icon" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+    <ul class="nav-links" id="nav-links" role="list">
       <li><a href="/portfolio/">Portafolio</a></li>
-      <li><a href="/portfolio/about.html" class="active">Acerca de mí</a></li>
+      <li><a href="/portfolio/about.html" class="active" aria-current="page">Acerca de mí</a></li>
       <li><a href="/portfolio/proyectos.html">Proyectos</a></li>
       <li><a href="https://www.instagram.com/nicolasbiondi" target="_blank" rel="noopener">Instagram</a></li>
       <li><a href="/portfolio/contacto.html">Contacto</a></li>
     </ul>
   </nav>
 
-  <main class="about-page">
+  <main class="about-page" id="main">
     <div class="about-img">
-      <img src="img/about-portrait.jpg" alt="Nicolás Biondi — Fotógrafo" />
+      <img src="img/about-portrait.jpg" alt="Nicolás Biondi — Fotógrafo retratado en estudio" width="360" height="480" fetchpriority="high" />
     </div>
     <div class="about-text">
       <p>
         Nací un 28 de mayo por la tarde cuando Daft Punk y Oasis dominaban las listas de éxitos.
-        A los pocos días de nacido, una vidente dijo que de cuando sea grande me convertiría en millonario,
-        ¿quién sabe?...
+        A los pocos días de nacido, una vidente dijo que de grande me convertiría en millonario…
+        ¿quién sabe?
       </p>
       <p>
-        Desde niño mostré interés por el arte, me gustaba mucho dibujar, escuchar música y tomar fotos
+        Desde niño mostré interés por el arte — me gustaba mucho dibujar, escuchar música y tomar fotos
         con la cámara de mis padres cada vez que podía. Hoy, empleo casi todo mi tiempo en la fotografía.
-        Estudié fotografía en el Museo de Arte de Lima, y diseño multimedia en el Instituto Norbert Weiener.
-        Luego llevé cursos de fotografía de estudio e iluminación, fotografía documental y creación de
-        fotoreportajes.
+        Estudié en el Museo de Arte de Lima y diseño multimedia en el Instituto Norbert Weiener. Luego
+        llevé cursos de fotografía de estudio e iluminación, fotografía documental y creación de fotoreportajes.
       </p>
       <p>
-        He trabajado con cadenas tales como Hilton Garden Inn, Hoteles Radisson, Segundo Muelle, Claro Perú,
-        Mandrágora y marcas tales como Play, Carpe Diem, Pukllana y Amangora.
+        He trabajado con cadenas como Hilton Garden Inn, Hoteles Radisson, Segundo Muelle, Claro Perú
+        y Mandrágora, y con marcas como Play, Carpe Diem, Pukllana y Amangora.
       </p>
       <p>
-        Durante el 2016 y el 2019 me dediqué a la docencia de fotografía e iluminación. Trabajé para el
-        instituto Toulouse Lautrec del grupo UCAL; La Escuela de Fotografía de Lima y las plataformas
-        Haz Mejores Fotos y Clínica de Pymes, donde fui también profesor de comercio electrónico.
+        Durante el 2016 y el 2019 me dediqué a la docencia de fotografía e iluminación. Trabajé para
+        el instituto Toulouse Lautrec (UCAL), La Escuela de Fotografía de Lima y las plataformas
+        Haz Mejores Fotos y Clínica de Pymes, donde también fui profesor de comercio electrónico.
       </p>
     </div>
   </main>
 
-  <footer class="social-footer">
-    <a href="https://www.facebook.com/nicolasbiondifoto" target="_blank" rel="noopener" aria-label="Facebook">
-      <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+  <footer class="social-footer" role="contentinfo">
+    <a href="https://www.facebook.com/nicolasbiondifoto" target="_blank" rel="noopener" aria-label="Facebook de Nicolás Biondi">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
     </a>
-    <a href="https://www.instagram.com/nicolasbiondi" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    <a href="https://www.instagram.com/nicolasbiondi" target="_blank" rel="noopener" aria-label="Instagram de Nicolás Biondi">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
     </a>
-    <a href="https://www.linkedin.com/in/nicol%C3%A1s-biondi-97098210b/" target="_blank" rel="noopener" aria-label="LinkedIn">
-      <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    <a href="https://www.linkedin.com/in/nicol%C3%A1s-biondi-97098210b/" target="_blank" rel="noopener" aria-label="LinkedIn de Nicolás Biondi">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
     </a>
   </footer>
 

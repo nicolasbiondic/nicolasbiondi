@@ -7,18 +7,30 @@
   <meta name="description" content="Portafolio fotográfico de Nicolás Biondi. Editorial, comercial y eventos en Lima, Perú." />
   <link rel="canonical" href="https://nicolasbiondi.com/portfolio/" />
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+
+  <!-- Preconnect for Google Fonts CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <link rel="stylesheet" href="portfolio.css" />
 </head>
 <body>
 
+  <!-- Skip link (a11y) -->
+  <a class="skip-link" href="#gallery">Ir al contenido</a>
+
   <!-- NAV -->
-  <nav class="nav">
-    <a class="nav-logo" href="/portfolio/">
-      <img src="img/logo.png" alt="Nicolás Biondi" />
+  <nav class="nav" id="nav">
+    <a class="nav-logo" href="/portfolio/" aria-label="Nicolás Biondi — Inicio">
+      <img src="img/logo.png" alt="Nicolás Biondi" width="120" height="28" />
     </a>
-    <button class="nav-toggle" aria-label="Menú">&#9776;</button>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="/portfolio/" class="active">Portafolio</a></li>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+      <span class="nav-toggle-icon" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="/portfolio/" class="active" aria-current="page">Portafolio</a></li>
       <li><a href="/portfolio/about.html">Acerca de mí</a></li>
       <li><a href="/portfolio/proyectos.html">Proyectos</a></li>
       <li><a href="https://www.instagram.com/nicolasbiondi" target="_blank" rel="noopener">Instagram</a></li>
@@ -26,46 +38,90 @@
     </ul>
   </nav>
 
-  <!-- GALLERY — horizontal scroll masonry -->
-  <main class="gallery" id="gallery">
-    <figure class="gallery-item" data-index="0"><img src="img/g01.jpg" alt="Fotografía 1" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="1"><img src="img/g02.jpg" alt="Fotografía 2" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="2"><img src="img/g03.jpg" alt="Fotografía 3" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="3"><img src="img/g04.jpg" alt="Fotografía 4" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="4"><img src="img/g05.jpg" alt="Fotografía 5" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="5"><img src="img/g06.jpg" alt="Fotografía 6" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="6"><img src="img/g07.jpg" alt="Fotografía 7" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="7"><img src="img/g08.jpg" alt="Fotografía 8" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="8"><img src="img/g09.jpg" alt="Fotografía 9" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="9"><img src="img/g10.jpg" alt="Fotografía 10" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="10"><img src="img/g11.jpg" alt="Fotografía 11" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="11"><img src="img/g12.jpg" alt="Fotografía 12" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="12"><img src="img/g13.jpg" alt="Fotografía 13" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="13"><img src="img/g14.jpg" alt="Fotografía 14" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="14"><img src="img/g15.jpg" alt="Fotografía 15" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="15"><img src="img/g16.jpg" alt="Fotografía 16" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="16"><img src="img/g17.jpg" alt="Fotografía 17" loading="lazy" /></figure>
-    <figure class="gallery-item" data-index="17"><img src="img/g18.jpg" alt="Fotografía 18" loading="lazy" /></figure>
+  <!-- GALLERY — horizontal scroll -->
+  <main class="gallery" id="gallery" role="main" aria-label="Galería fotográfica">
+    <!-- First image: eager load, high priority -->
+    <figure class="gallery-item" data-index="0">
+      <img src="img/g01.jpg" alt="Fotografía editorial 1" width="533" height="800" fetchpriority="high" />
+    </figure>
+    <figure class="gallery-item" data-index="1">
+      <img src="img/g02.jpg" alt="Fotografía editorial 2" width="533" height="800" loading="lazy" />
+    </figure>
+    <figure class="gallery-item" data-index="2">
+      <img src="img/g03.jpg" alt="Fotografía editorial 3" width="533" height="800" loading="lazy" />
+    </figure>
+    <figure class="gallery-item" data-index="3">
+      <img src="img/g04.jpg" alt="Fotografía editorial 4" width="533" height="800" loading="lazy" />
+    </figure>
+    <figure class="gallery-item" data-index="4">
+      <img src="img/g05.jpg" alt="Fotografía editorial 5" width="533" height="800" loading="lazy" />
+    </figure>
+    <figure class="gallery-item" data-index="5">
+      <img src="img/g06.jpg" alt="Fotografía editorial 6" width="533" height="800" loading="lazy" />
+    </figure>
+    <figure class="gallery-item" data-index="6">
+      <img src="img/g07.jpg" alt="Fotografía editorial 7" width="533" height="800" loading="lazy" />
+    </figure>
+    <figure class="gallery-item" data-index="7">
+      <img src="img/g08.jpg" alt="Fotografía editorial 8" width="533" height="800" loading="lazy" />
+    </figure>
+    <figure class="gallery-item" data-index="8">
+      <img src="img/g09.jpg" alt="Fotografía editorial 9" width="533" height="800" loading="lazy" />
+    </figure>
+    <figure class="gallery-item" data-index="9">
+      <img src="img/g10.jpg" alt="Fotografía editorial 10" width="533" height="800" loading="lazy" />
+    </figure>
+    <figure class="gallery-item" data-index="10">
+      <img src="img/g11.jpg" alt="Fotografía editorial 11" width="533" height="800" loading="lazy" />
+    </figure>
+    <figure class="gallery-item" data-index="11">
+      <img src="img/g12.jpg" alt="Fotografía editorial 12" width="800" height="533" loading="lazy" />
+    </figure>
+    <figure class="gallery-item" data-index="12">
+      <img src="img/g13.jpg" alt="Fotografía editorial 13" width="533" height="800" loading="lazy" />
+    </figure>
+    <figure class="gallery-item" data-index="13">
+      <img src="img/g14.jpg" alt="Fotografía editorial 14" width="533" height="800" loading="lazy" />
+    </figure>
+    <figure class="gallery-item" data-index="14">
+      <img src="img/g15.jpg" alt="Fotografía editorial 15" width="533" height="800" loading="lazy" />
+    </figure>
+    <figure class="gallery-item" data-index="15">
+      <img src="img/g16.jpg" alt="Fotografía editorial 16" width="533" height="800" loading="lazy" />
+    </figure>
+    <figure class="gallery-item" data-index="16">
+      <img src="img/g17.jpg" alt="Fotografía editorial 17" width="533" height="800" loading="lazy" />
+    </figure>
+    <figure class="gallery-item" data-index="17">
+      <img src="img/g18.jpg" alt="Fotografía editorial 18" width="533" height="800" loading="lazy" />
+    </figure>
   </main>
+
+  <!-- Scroll hint -->
+  <div class="scroll-hint" id="scroll-hint" aria-hidden="true">
+    <span class="scroll-hint-arrow"></span>
+    <span>desplazar</span>
+  </div>
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+    <span class="lb-counter" id="lb-counter" aria-live="polite"></span>
     <button class="lb-close" id="lb-close" aria-label="Cerrar">&#x2715;</button>
-    <button class="lb-prev"  id="lb-prev"  aria-label="Anterior">&#x2039;</button>
-    <button class="lb-next"  id="lb-next"  aria-label="Siguiente">&#x203A;</button>
+    <button class="lb-prev"  id="lb-prev"  aria-label="Foto anterior">&#x2039;</button>
+    <button class="lb-next"  id="lb-next"  aria-label="Foto siguiente">&#x203A;</button>
     <div class="lb-img-wrap"><img id="lb-img" src="" alt="" /></div>
   </div>
 
   <!-- SOCIAL FOOTER -->
-  <footer class="social-footer">
-    <a href="https://www.facebook.com/nicolasbiondifoto" target="_blank" rel="noopener" aria-label="Facebook">
-      <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+  <footer class="social-footer" role="contentinfo">
+    <a href="https://www.facebook.com/nicolasbiondifoto" target="_blank" rel="noopener" aria-label="Facebook de Nicolás Biondi">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
     </a>
-    <a href="https://www.instagram.com/nicolasbiondi" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    <a href="https://www.instagram.com/nicolasbiondi" target="_blank" rel="noopener" aria-label="Instagram de Nicolás Biondi">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
     </a>
-    <a href="https://www.linkedin.com/in/nicol%C3%A1s-biondi-97098210b/" target="_blank" rel="noopener" aria-label="LinkedIn">
-      <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    <a href="https://www.linkedin.com/in/nicol%C3%A1s-biondi-97098210b/" target="_blank" rel="noopener" aria-label="LinkedIn de Nicolás Biondi">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
     </a>
   </footer>
 
