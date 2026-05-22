@@ -200,11 +200,12 @@ img { display: block; max-width: 100%; }
   margin-top: var(--nav-h);
   flex: 1;
   display: flex;
-  align-items: stretch;
-  gap: 4px;
+  align-items: center;     /* vertical center photos */
+  gap: 6px;
   overflow-x: auto;
   overflow-y: hidden;
   height: calc(100svh - var(--nav-h) - var(--footer-h));
+  padding: 1.5rem 1.5rem;  /* breathing room top/bottom + horizontal start */
   scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
@@ -225,6 +226,10 @@ img { display: block; max-width: 100%; }
   background: var(--off-white);
 }
 
+/* Aspect ratios per orientation — keeps photos at consistent size */
+.gallery-item.landscape { aspect-ratio: 3/2; }
+.gallery-item.portrait  { aspect-ratio: 2/3; }
+
 .gallery-item:nth-child(1)  { animation-delay: .02s; }
 .gallery-item:nth-child(2)  { animation-delay: .06s; }
 .gallery-item:nth-child(3)  { animation-delay: .10s; }
@@ -235,9 +240,8 @@ img { display: block; max-width: 100%; }
 .gallery-item:nth-child(8)  { animation-delay: .30s; }
 
 .gallery-item img {
+  width: 100%;
   height: 100%;
-  width: auto;
-  max-width: none;
   object-fit: cover;
   transition: transform .5s var(--ease), filter .35s var(--ease);
   display: block;
