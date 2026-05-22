@@ -398,13 +398,17 @@ img { display: block; max-width: 100%; }
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(8,8,8,0.97);
-  z-index: 200;
+  background: rgba(8,8,8,0.98);
+  z-index: 9999;
+  isolation: isolate;
   align-items: center;
   justify-content: center;
   overscroll-behavior: contain;
   flex-direction: column;
 }
+
+/* Hide nav while lightbox is open (visual fallback if z-index conflicts) */
+body.lightbox-open .nav { visibility: hidden; }
 
 .lightbox.open {
   display: flex;
@@ -907,7 +911,7 @@ img { display: block; max-width: 100%; }
   .nav-links a {
     display: block;
     padding: 1rem 1.5rem;
-    font-size: 0.85rem;
+    font-size: 1rem;
     border-radius: 0;
     min-height: 44px;
   }
@@ -993,12 +997,33 @@ img { display: block; max-width: 100%; }
 
   /* LIGHTBOX mobile */
   .lb-img-wrap { padding: 3.5rem 0.5rem 0.5rem; }
-  .lb-prev { left: 0.5rem; width: 40px; height: 40px; }
-  .lb-next { right: 0.5rem; width: 40px; height: 40px; }
+  .lb-prev { left: 0.5rem; width: 44px; height: 44px; }
+  .lb-next { right: 0.5rem; width: 44px; height: 44px; }
+  .lb-close, .lb-zoom { width: 44px; height: 44px; }
   .lb-keyboard-hint { display: none; }
   .lb-thumbs { padding: 6px 0.5rem 10px; height: 64px; }
   .lb-thumb { width: 44px; height: 44px; }
   .social-footer { padding: 0 1rem; }
+}
+
+/* ── Tablet portrait & large-phone landscape: 2-col gallery ──── */
+@media (min-width: 540px) and (max-width: 768px) {
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+  .gallery-item {
+    width: 100%;
+    height: auto;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+  }
+  .gallery-item[data-index="11"] img { aspect-ratio: 4/3; }
 }
 
 /* ── Extra tight phones ──────────────────────────────────────── */

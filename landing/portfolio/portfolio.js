@@ -155,7 +155,16 @@
   function openLightbox(idx) {
     triggerEl = document.activeElement;
     lightbox.classList.add('open');
+    document.body.classList.add('lightbox-open');
     document.body.style.overflow = 'hidden';
+
+    // a11y: hide nav from assistive tech + tab order
+    var nav = document.getElementById('nav');
+    if (nav) {
+      nav.setAttribute('aria-hidden', 'true');
+      nav.setAttribute('inert', '');
+    }
+
     showImage(idx);
     requestAnimationFrame(function () {
       document.getElementById('lb-close').focus();
@@ -164,9 +173,17 @@
 
   function closeLightbox() {
     lightbox.classList.remove('open');
+    document.body.classList.remove('lightbox-open');
     document.body.style.overflow = '';
     lbImg.src = '';
     lbImg.classList.remove('zoomed', 'loading');
+
+    var nav = document.getElementById('nav');
+    if (nav) {
+      nav.removeAttribute('aria-hidden');
+      nav.removeAttribute('inert');
+    }
+
     if (triggerEl && typeof triggerEl.focus === 'function') {
       triggerEl.focus();
     }
