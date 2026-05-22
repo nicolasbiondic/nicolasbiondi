@@ -1,0 +1,2539 @@
+{
+  "collections": [
+    {
+      "uri": "comercialempresarial",
+      "folder": "comercial/empresarial",
+      "title": "Comercial / Empresarial",
+      "category": "comercial",
+      "items": [
+        {
+          "file": "181353CTH55ByH.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 0,
+          "s3": 6,
+          "local": "01.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353zPWDAx6U.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 1,
+          "s3": 6,
+          "local": "02.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353QbAJH8A7.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 2,
+          "s3": 6,
+          "local": "03.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353Zx0zjAe5.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 3,
+          "s3": 6,
+          "local": "04.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353PXteqKDY.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 4,
+          "s3": 6,
+          "local": "05.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353i0VUvZQC.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 5,
+          "s3": 6,
+          "local": "06.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353cHAcPaLE.jpg",
+          "w": 2048,
+          "h": 2048,
+          "idx": 6,
+          "s3": 6,
+          "local": "07.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813534APrVAMj.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 7,
+          "s3": 6,
+          "local": "08.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353JmdB4bpk.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 8,
+          "s3": 6,
+          "local": "09.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813536WYA5QvU.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 9,
+          "s3": 6,
+          "local": "10.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353ThOztnxo.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 10,
+          "s3": 6,
+          "local": "11.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353PBtPqG2c.jpg",
+          "w": 2048,
+          "h": 1362,
+          "idx": 11,
+          "s3": 6,
+          "local": "12.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353PG2kAFYm.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 12,
+          "s3": 6,
+          "local": "13.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353Glh06MZt.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 13,
+          "s3": 6,
+          "local": "14.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353WmjeRtKp.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 14,
+          "s3": 6,
+          "local": "15.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353r19VS51n.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 15,
+          "s3": 6,
+          "local": "16.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353RmfIaRpZ.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 16,
+          "s3": 6,
+          "local": "17.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353Hvqgu4QO.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 17,
+          "s3": 6,
+          "local": "18.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353z4MCZ6j4.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 18,
+          "s3": 6,
+          "local": "19.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353zHbokagY.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 19,
+          "s3": 6,
+          "local": "20.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813531gGMTZEa.jpg",
+          "w": 2048,
+          "h": 1514,
+          "idx": 20,
+          "s3": 6,
+          "local": "21.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353SCTpMF4f.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 21,
+          "s3": 6,
+          "local": "22.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353K7r5ce0q.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 22,
+          "s3": 6,
+          "local": "23.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353Qo6AjkGM.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 23,
+          "s3": 6,
+          "local": "24.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353IPj6q79z.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 24,
+          "s3": 6,
+          "local": "25.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353QAG8DMoj.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 25,
+          "s3": 6,
+          "local": "26.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353ehlQMgWT.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 26,
+          "s3": 6,
+          "local": "27.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353QGdd4RK7.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 27,
+          "s3": 6,
+          "local": "28.jpg",
+          "status": "downloaded"
+        }
+      ]
+    },
+    {
+      "uri": "retratosempresariales",
+      "folder": "comercial/retratos-empresariales",
+      "title": "Retratos empresariales",
+      "category": "comercial",
+      "items": [
+        {
+          "file": "181353BKYIxVMt.jpg",
+          "w": 2048,
+          "h": 1368,
+          "idx": 0,
+          "s3": 6,
+          "local": "01.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353n7SGQT9R.jpg",
+          "w": 1367,
+          "h": 2048,
+          "idx": 1,
+          "s3": 6,
+          "local": "02.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353IuwzvgBA.jpg",
+          "w": 1363,
+          "h": 2048,
+          "idx": 2,
+          "s3": 6,
+          "local": "03.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353NMY1uj5P.jpg",
+          "w": 1365,
+          "h": 2048,
+          "idx": 3,
+          "s3": 6,
+          "local": "04.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353VuSeoDZl.jpg",
+          "w": 1367,
+          "h": 2048,
+          "idx": 4,
+          "s3": 6,
+          "local": "05.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353OrOUrmYQ.jpg",
+          "w": 1365,
+          "h": 2048,
+          "idx": 5,
+          "s3": 6,
+          "local": "06.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353c66KA0mN.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 6,
+          "s3": 6,
+          "local": "07.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353wOf25OTJ.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 7,
+          "s3": 6,
+          "local": "08.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813536dH85DWF.jpg",
+          "w": 2048,
+          "h": 1362,
+          "idx": 8,
+          "s3": 6,
+          "local": "09.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353FOvjhixf.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 9,
+          "s3": 6,
+          "local": "10.jpg",
+          "status": "downloaded"
+        }
+      ]
+    },
+    {
+      "uri": "portafolio-comida",
+      "folder": "comercial/alimentos",
+      "title": "Alimentos",
+      "category": "comercial",
+      "items": [
+        {
+          "file": "18135317136H21B.jpg",
+          "w": 1365,
+          "h": 2048,
+          "idx": 0,
+          "s3": 2,
+          "local": "01.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135317136sciJ.jpg",
+          "w": 1373,
+          "h": 2048,
+          "idx": 1,
+          "s3": 2,
+          "local": "02.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135317136RIAQ.jpg",
+          "w": 1356,
+          "h": 2048,
+          "idx": 2,
+          "s3": 2,
+          "local": "03.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353171364dD2.jpg",
+          "w": 2048,
+          "h": 1356,
+          "idx": 3,
+          "s3": 2,
+          "local": "04.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353171360jNq.jpg",
+          "w": 1356,
+          "h": 2048,
+          "idx": 4,
+          "s3": 2,
+          "local": "05.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135317136idFx.jpg",
+          "w": 1363,
+          "h": 2048,
+          "idx": 5,
+          "s3": 2,
+          "local": "06.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135317136lvUm.jpg",
+          "w": 1363,
+          "h": 2048,
+          "idx": 6,
+          "s3": 2,
+          "local": "07.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135317136INfF.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 7,
+          "s3": 2,
+          "local": "08.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135317136Z4xX.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 8,
+          "s3": 2,
+          "local": "09.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135317136cLjT.jpg",
+          "w": 1363,
+          "h": 2048,
+          "idx": 9,
+          "s3": 2,
+          "local": "10.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135317136MwyH.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 10,
+          "s3": 2,
+          "local": "11.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813531713677zC.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 11,
+          "s3": 2,
+          "local": "12.jpg",
+          "status": "downloaded"
+        }
+      ]
+    },
+    {
+      "uri": "productos",
+      "folder": "comercial/productos",
+      "title": "Productos",
+      "category": "comercial",
+      "items": [
+        {
+          "file": "1813532OPLBiDq.jpg",
+          "w": 2048,
+          "h": 1366,
+          "idx": 0,
+          "s3": 6,
+          "local": "01.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353pIclMmwr.jpg",
+          "w": 1363,
+          "h": 2048,
+          "idx": 1,
+          "s3": 6,
+          "local": "02.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353LpEShuAN.jpg",
+          "w": 1363,
+          "h": 2048,
+          "idx": 2,
+          "s3": 6,
+          "local": "03.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353kvE2eF4r.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 3,
+          "s3": 6,
+          "local": "04.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353VETKDWih.jpg",
+          "w": 1367,
+          "h": 2048,
+          "idx": 4,
+          "s3": 6,
+          "local": "05.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353hZLYjKIV.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 5,
+          "s3": 6,
+          "local": "06.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813532YM13baz.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 6,
+          "s3": 6,
+          "local": "07.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353g9dBZx4g.jpg",
+          "w": 2048,
+          "h": 1370,
+          "idx": 7,
+          "s3": 6,
+          "local": "08.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353EejvKCO8.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 8,
+          "s3": 6,
+          "local": "09.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353SPxpUG1I.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 9,
+          "s3": 6,
+          "local": "10.jpg",
+          "status": "downloaded"
+        }
+      ]
+    },
+    {
+      "uri": "documental-cementerio-de-nueva-esperanza",
+      "folder": "personal/documental-nueva-esperanza",
+      "title": "Documental: Cementerio de Nueva Esperanza",
+      "category": "personal",
+      "items": [
+        {
+          "file": "181353163317xYb.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 0,
+          "s3": 6,
+          "local": "01.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331qPTp.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 1,
+          "s3": 6,
+          "local": "02.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331Pr4z.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 2,
+          "s3": 6,
+          "local": "03.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331RRnx.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 3,
+          "s3": 6,
+          "local": "04.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353163314PDe.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 4,
+          "s3": 6,
+          "local": "05.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813531633138bK.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 5,
+          "s3": 6,
+          "local": "06.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353163314u6E.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 6,
+          "s3": 6,
+          "local": "07.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331XZ97.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 7,
+          "s3": 6,
+          "local": "08.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331UrV8.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 8,
+          "s3": 6,
+          "local": "09.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331MrS9.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 9,
+          "s3": 6,
+          "local": "10.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331BpE0.jpg",
+          "w": 1192,
+          "h": 1800,
+          "idx": 10,
+          "s3": 6,
+          "local": "11.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331p7mY.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 11,
+          "s3": 6,
+          "local": "12.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331eoPn.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 12,
+          "s3": 6,
+          "local": "13.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331gsdq.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 13,
+          "s3": 6,
+          "local": "14.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331AeNi.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 14,
+          "s3": 6,
+          "local": "15.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331J4Rc.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 15,
+          "s3": 6,
+          "local": "16.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331UuEU.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 16,
+          "s3": 6,
+          "local": "17.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331vXLm.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 17,
+          "s3": 6,
+          "local": "18.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331Sm9X.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 18,
+          "s3": 6,
+          "local": "19.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331XFao.jpg",
+          "w": 1800,
+          "h": 1198,
+          "idx": 19,
+          "s3": 6,
+          "local": "20.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331SyhE.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 20,
+          "s3": 6,
+          "local": "21.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353163318tVC.jpg",
+          "w": 1800,
+          "h": 1198,
+          "idx": 21,
+          "s3": 6,
+          "local": "22.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331ndrK.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 22,
+          "s3": 6,
+          "local": "23.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331Dzvv.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 23,
+          "s3": 6,
+          "local": "24.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331qxpf.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 24,
+          "s3": 6,
+          "local": "25.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331YzoR.jpg",
+          "w": 1192,
+          "h": 1800,
+          "idx": 25,
+          "s3": 6,
+          "local": "26.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331p875.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 26,
+          "s3": 6,
+          "local": "27.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331y49q.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 27,
+          "s3": 6,
+          "local": "28.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331PfMB.jpg",
+          "w": 1192,
+          "h": 1800,
+          "idx": 28,
+          "s3": 6,
+          "local": "29.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353163317Op0.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 29,
+          "s3": 6,
+          "local": "30.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353163319WAs.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 30,
+          "s3": 6,
+          "local": "31.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331I8yk.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 31,
+          "s3": 6,
+          "local": "32.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331a8wG.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 32,
+          "s3": 6,
+          "local": "33.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331yz81.jpg",
+          "w": 1800,
+          "h": 1198,
+          "idx": 33,
+          "s3": 6,
+          "local": "34.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316331T4PB.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 34,
+          "s3": 6,
+          "local": "35.jpg",
+          "status": "downloaded"
+        }
+      ]
+    },
+    {
+      "uri": "retratos-nueva-esperanza",
+      "folder": "personal/retratos-nueva-esperanza",
+      "title": "Retratos: Nueva Esperanza",
+      "category": "personal",
+      "items": [
+        {
+          "file": "1813531639oxyT.jpg",
+          "w": 1800,
+          "h": 1198,
+          "idx": 0,
+          "s3": 0,
+          "local": "01.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316446SVM.jpg",
+          "w": 1198,
+          "h": 1800,
+          "idx": 1,
+          "s3": 2,
+          "local": "02.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813531639USKj.jpg",
+          "w": 1800,
+          "h": 1198,
+          "idx": 2,
+          "s3": 0,
+          "local": "03.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813531639QoHS.jpg",
+          "w": 1800,
+          "h": 1198,
+          "idx": 3,
+          "s3": 0,
+          "local": "04.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813531639RyvY.jpg",
+          "w": 1800,
+          "h": 1198,
+          "idx": 4,
+          "s3": 2,
+          "local": "05.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813531639Rqix.jpg",
+          "w": 1800,
+          "h": 1198,
+          "idx": 5,
+          "s3": 0,
+          "local": "06.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813531639mBRx.jpg",
+          "w": 1800,
+          "h": 1198,
+          "idx": 6,
+          "s3": 0,
+          "local": "07.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353163244j9R.jpg",
+          "w": 1198,
+          "h": 1800,
+          "idx": 7,
+          "s3": 6,
+          "local": "08.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813531632424BO.jpg",
+          "w": 1800,
+          "h": 1198,
+          "idx": 8,
+          "s3": 6,
+          "local": "09.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316324QFHk.jpg",
+          "w": 1198,
+          "h": 1800,
+          "idx": 9,
+          "s3": 6,
+          "local": "10.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135316324DjE4.jpg",
+          "w": 1800,
+          "h": 1198,
+          "idx": 10,
+          "s3": 6,
+          "local": "11.jpg",
+          "status": "downloaded"
+        }
+      ]
+    },
+    {
+      "uri": "lifestyle",
+      "folder": "personal/lifestyle",
+      "title": "Lifestyle",
+      "category": "personal",
+      "items": [
+        {
+          "file": "18135314218v6TO.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 0,
+          "s3": 6,
+          "local": "01.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314218glVi.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 1,
+          "s3": 6,
+          "local": "02.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314218MMn1.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 2,
+          "s3": 6,
+          "local": "03.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314218PeNw.jpg",
+          "w": 1193,
+          "h": 1800,
+          "idx": 3,
+          "s3": 6,
+          "local": "04.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314218b7Jn.jpg",
+          "w": 1800,
+          "h": 1200,
+          "idx": 4,
+          "s3": 6,
+          "local": "05.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353142181InY.jpg",
+          "w": 1192,
+          "h": 1800,
+          "idx": 5,
+          "s3": 6,
+          "local": "06.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314218gR8i.jpg",
+          "w": 1192,
+          "h": 1800,
+          "idx": 6,
+          "s3": 6,
+          "local": "07.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314218gQtj.jpg",
+          "w": 1200,
+          "h": 1800,
+          "idx": 7,
+          "s3": 6,
+          "local": "08.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314218sExm.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 8,
+          "s3": 6,
+          "local": "09.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314218lAuN.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 9,
+          "s3": 6,
+          "local": "10.jpg",
+          "status": "downloaded"
+        }
+      ]
+    },
+    {
+      "uri": "lima",
+      "folder": "personal/lima",
+      "title": "Lima",
+      "category": "personal",
+      "items": [
+        {
+          "file": "18135314211TwLn.jpg",
+          "w": 1800,
+          "h": 1200,
+          "idx": 0,
+          "s3": 6,
+          "local": "01.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314211D6NG.jpg",
+          "w": 1800,
+          "h": 1200,
+          "idx": 1,
+          "s3": 6,
+          "local": "02.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314211rcTc.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 2,
+          "s3": 6,
+          "local": "03.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314211aGt2.jpg",
+          "w": 1800,
+          "h": 1200,
+          "idx": 3,
+          "s3": 6,
+          "local": "04.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353142113lov.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 4,
+          "s3": 6,
+          "local": "05.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314211bQGw.jpg",
+          "w": 1800,
+          "h": 1200,
+          "idx": 5,
+          "s3": 6,
+          "local": "06.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314211wgtU.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 6,
+          "s3": 6,
+          "local": "07.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314211CZMe.jpg",
+          "w": 1193,
+          "h": 1800,
+          "idx": 7,
+          "s3": 6,
+          "local": "08.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314211IKcs.jpg",
+          "w": 1800,
+          "h": 1200,
+          "idx": 8,
+          "s3": 6,
+          "local": "09.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314211QEqp.jpg",
+          "w": 1800,
+          "h": 1200,
+          "idx": 9,
+          "s3": 6,
+          "local": "10.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314211Vlf2.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 10,
+          "s3": 6,
+          "local": "11.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314211iGma.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 11,
+          "s3": 6,
+          "local": "12.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314211rxO9.jpg",
+          "w": 1800,
+          "h": 1192,
+          "idx": 12,
+          "s3": 6,
+          "local": "13.jpg",
+          "status": "downloaded"
+        }
+      ]
+    },
+    {
+      "uri": "film",
+      "folder": "personal/film",
+      "title": "Film",
+      "category": "personal",
+      "items": [
+        {
+          "file": "181353GBe51wbR.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 0,
+          "s3": 6,
+          "local": "01.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353vzaWLz3j.jpg",
+          "w": 1365,
+          "h": 2048,
+          "idx": 1,
+          "s3": 6,
+          "local": "02.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353xjIvVAyQ.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 2,
+          "s3": 6,
+          "local": "03.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813533nRlwjHu.jpg",
+          "w": 2048,
+          "h": 1364,
+          "idx": 3,
+          "s3": 6,
+          "local": "04.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353tWv7dX3q.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 4,
+          "s3": 6,
+          "local": "05.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353t1lc9YYm.jpg",
+          "w": 2048,
+          "h": 1300,
+          "idx": 5,
+          "s3": 6,
+          "local": "06.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353gmxyvhaa.jpg",
+          "w": 2048,
+          "h": 1324,
+          "idx": 6,
+          "s3": 6,
+          "local": "07.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813538GZzaCmj.jpg",
+          "w": 1364,
+          "h": 2048,
+          "idx": 7,
+          "s3": 6,
+          "local": "08.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353CqlLdwff.jpg",
+          "w": 2048,
+          "h": 1364,
+          "idx": 8,
+          "s3": 6,
+          "local": "09.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353bCBW20D6.jpg",
+          "w": 2048,
+          "h": 1364,
+          "idx": 9,
+          "s3": 6,
+          "local": "10.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353UljkR7OV.jpg",
+          "w": 2048,
+          "h": 1364,
+          "idx": 10,
+          "s3": 6,
+          "local": "11.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353Sx7eRy5Q.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 11,
+          "s3": 6,
+          "local": "12.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353lEINEKac.jpg",
+          "w": 1365,
+          "h": 2048,
+          "idx": 12,
+          "s3": 6,
+          "local": "13.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353T0CBTkKI.jpg",
+          "w": 1365,
+          "h": 2048,
+          "idx": 13,
+          "s3": 6,
+          "local": "14.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353lgVeaIdF.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 14,
+          "s3": 6,
+          "local": "15.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353zP9oKyse.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 15,
+          "s3": 6,
+          "local": "16.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353bVzkJTJA.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 16,
+          "s3": 6,
+          "local": "17.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353Ztub3rv6.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 17,
+          "s3": 6,
+          "local": "18.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353iFISsfNn.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 18,
+          "s3": 6,
+          "local": "19.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353rXoICJdM.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 19,
+          "s3": 6,
+          "local": "20.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353kacvbFc4.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 20,
+          "s3": 6,
+          "local": "21.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353IvZTAsSc.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 21,
+          "s3": 6,
+          "local": "22.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353WatthRmG.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 22,
+          "s3": 6,
+          "local": "23.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353yKsx0JCj.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 23,
+          "s3": 6,
+          "local": "24.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353l13T5iDT.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 24,
+          "s3": 6,
+          "local": "25.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353T4u1JqPE.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 25,
+          "s3": 6,
+          "local": "26.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813535IP7DIFK.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 26,
+          "s3": 6,
+          "local": "27.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353gv4uLS19.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 27,
+          "s3": 6,
+          "local": "28.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813533xuuPdxz.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 28,
+          "s3": 6,
+          "local": "29.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353nvbUJHjr.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 29,
+          "s3": 6,
+          "local": "30.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353T18oDjRN.jpg",
+          "w": 1365,
+          "h": 2048,
+          "idx": 30,
+          "s3": 6,
+          "local": "31.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353ipzcqIwU.jpg",
+          "w": 1365,
+          "h": 2048,
+          "idx": 31,
+          "s3": 6,
+          "local": "32.jpg",
+          "status": "downloaded"
+        }
+      ]
+    },
+    {
+      "uri": "infantiles",
+      "folder": "eventos/infantiles",
+      "title": "Infantiles",
+      "category": "eventos",
+      "items": [
+        {
+          "file": "181353f59N7oON.jpg",
+          "w": 1363,
+          "h": 2048,
+          "idx": 0,
+          "s3": 6,
+          "local": "01.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353fYUcIQU6.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 1,
+          "s3": 6,
+          "local": "02.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353EP6mzbaB.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 2,
+          "s3": 6,
+          "local": "03.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353Jh4ebrIK.jpg",
+          "w": 2048,
+          "h": 1364,
+          "idx": 3,
+          "s3": 6,
+          "local": "04.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353M58CWtGo.jpg",
+          "w": 2048,
+          "h": 1364,
+          "idx": 4,
+          "s3": 6,
+          "local": "05.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135387Cf0Gss.jpg",
+          "w": 1363,
+          "h": 2048,
+          "idx": 5,
+          "s3": 6,
+          "local": "06.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353nOPDNDRq.jpg",
+          "w": 1363,
+          "h": 2048,
+          "idx": 6,
+          "s3": 6,
+          "local": "07.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353tTR7Sxox.jpg",
+          "w": 1356,
+          "h": 2048,
+          "idx": 7,
+          "s3": 6,
+          "local": "08.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353Af8Vo5UP.jpg",
+          "w": 2048,
+          "h": 1356,
+          "idx": 8,
+          "s3": 6,
+          "local": "09.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353KBECRSbc.jpg",
+          "w": 2048,
+          "h": 1356,
+          "idx": 9,
+          "s3": 6,
+          "local": "10.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353PdcQQFxL.jpg",
+          "w": 2048,
+          "h": 1356,
+          "idx": 10,
+          "s3": 6,
+          "local": "11.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813532HWet1DP.jpg",
+          "w": 2048,
+          "h": 1356,
+          "idx": 11,
+          "s3": 6,
+          "local": "12.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353VNDoTr9V.jpg",
+          "w": 2048,
+          "h": 1356,
+          "idx": 12,
+          "s3": 6,
+          "local": "13.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353gQ9yxvqt.jpg",
+          "w": 2048,
+          "h": 1356,
+          "idx": 13,
+          "s3": 6,
+          "local": "14.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353r6BdbpIL.jpg",
+          "w": 2048,
+          "h": 1356,
+          "idx": 14,
+          "s3": 6,
+          "local": "15.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813538W4yhDsp.jpg",
+          "w": 2048,
+          "h": 1356,
+          "idx": 15,
+          "s3": 6,
+          "local": "16.jpg",
+          "status": "downloaded"
+        }
+      ]
+    },
+    {
+      "uri": "matrimonios",
+      "folder": "eventos/matrimonios",
+      "title": "Matrimonios",
+      "category": "eventos",
+      "items": [
+        {
+          "file": "181353TiyjAWK0.jpg",
+          "w": 2048,
+          "h": 1356,
+          "idx": 0,
+          "s3": 6,
+          "local": "01.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813530NuWRVOS.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 1,
+          "s3": 6,
+          "local": "02.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353Ing3b3Ug.jpg",
+          "w": 2048,
+          "h": 1356,
+          "idx": 2,
+          "s3": 6,
+          "local": "03.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353t1i7KA9n.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 3,
+          "s3": 6,
+          "local": "04.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813533QQSfLYP.jpg",
+          "w": 1363,
+          "h": 2048,
+          "idx": 4,
+          "s3": 6,
+          "local": "05.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135314kIAFzY.jpg",
+          "w": 1363,
+          "h": 2048,
+          "idx": 5,
+          "s3": 6,
+          "local": "06.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353kfHAczOJ.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 6,
+          "s3": 6,
+          "local": "07.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353og5C921R.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 7,
+          "s3": 6,
+          "local": "08.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813530AsMSJb1.jpg",
+          "w": 2048,
+          "h": 2048,
+          "idx": 8,
+          "s3": 6,
+          "local": "09.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353FymDhWlZ.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 9,
+          "s3": 6,
+          "local": "10.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353AVXTPYwu.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 10,
+          "s3": 6,
+          "local": "11.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353AQHZADXc.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 11,
+          "s3": 6,
+          "local": "12.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813530dv7ZHX5.jpg",
+          "w": 1363,
+          "h": 2048,
+          "idx": 12,
+          "s3": 6,
+          "local": "13.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813531ZlDevHr.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 13,
+          "s3": 6,
+          "local": "14.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813531ZeOUI3l.jpg",
+          "w": 2048,
+          "h": 1356,
+          "idx": 14,
+          "s3": 6,
+          "local": "15.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813530m5JEJXY.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 15,
+          "s3": 6,
+          "local": "16.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353CTtvf8zK.jpg",
+          "w": 2048,
+          "h": 1365,
+          "idx": 16,
+          "s3": 6,
+          "local": "17.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353Cvk54KlD.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 17,
+          "s3": 6,
+          "local": "18.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353uCUrmMXl.jpg",
+          "w": 2048,
+          "h": 1356,
+          "idx": 18,
+          "s3": 6,
+          "local": "19.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353zKPzsyJB.jpg",
+          "w": 2048,
+          "h": 1363,
+          "idx": 19,
+          "s3": 6,
+          "local": "20.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353g4DAtNQ2.jpg",
+          "w": 2048,
+          "h": 1356,
+          "idx": 20,
+          "s3": 6,
+          "local": "21.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353mlRUlsTy.jpg",
+          "w": 2048,
+          "h": 1356,
+          "idx": 21,
+          "s3": 6,
+          "local": "22.jpg",
+          "status": "downloaded"
+        }
+      ]
+    },
+    {
+      "uri": "m",
+      "folder": "eventos/magico-engano-2017",
+      "title": "Mágico Engaño 2017",
+      "category": "eventos",
+      "items": [
+        {
+          "file": "181353KOYrge0h.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 0,
+          "s3": 6,
+          "local": "01.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353uyr4HZ8H.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 1,
+          "s3": 6,
+          "local": "02.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353fRTd2ywM.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 2,
+          "s3": 6,
+          "local": "03.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353FkhIV9WE.jpg",
+          "w": 1367,
+          "h": 2048,
+          "idx": 3,
+          "s3": 6,
+          "local": "04.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353Ed1jmZjK.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 4,
+          "s3": 6,
+          "local": "05.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353A4DWZgXC.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 5,
+          "s3": 6,
+          "local": "06.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353l503E5wP.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 6,
+          "s3": 6,
+          "local": "07.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353m7JcjWkE.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 7,
+          "s3": 6,
+          "local": "08.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353b5eJzFYE.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 8,
+          "s3": 6,
+          "local": "09.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353W29nlG8r.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 9,
+          "s3": 6,
+          "local": "10.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353eexsC2AG.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 10,
+          "s3": 6,
+          "local": "11.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353T4ocMKgD.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 11,
+          "s3": 6,
+          "local": "12.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353fcLrF52T.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 12,
+          "s3": 6,
+          "local": "13.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353F6EK24W9.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 13,
+          "s3": 6,
+          "local": "14.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813531xlKcmOv.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 14,
+          "s3": 6,
+          "local": "15.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353VoDqvevr.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 15,
+          "s3": 6,
+          "local": "16.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353B2muSQq2.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 16,
+          "s3": 6,
+          "local": "17.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353srvMGx1j.jpg",
+          "w": 1367,
+          "h": 2048,
+          "idx": 17,
+          "s3": 6,
+          "local": "18.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813532FvO3Fgx.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 18,
+          "s3": 6,
+          "local": "19.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353GhysoqYH.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 19,
+          "s3": 6,
+          "local": "20.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353zv2RBocH.jpg",
+          "w": 1367,
+          "h": 2048,
+          "idx": 20,
+          "s3": 6,
+          "local": "21.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813530HOCsmGg.jpg",
+          "w": 1367,
+          "h": 2048,
+          "idx": 21,
+          "s3": 6,
+          "local": "22.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353IW60MdHu.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 22,
+          "s3": 6,
+          "local": "23.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353PgyoToZu.jpg",
+          "w": 1367,
+          "h": 2048,
+          "idx": 23,
+          "s3": 6,
+          "local": "24.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353zdtAJvvq.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 24,
+          "s3": 6,
+          "local": "25.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353LHKa6mP9.jpg",
+          "w": 1367,
+          "h": 2048,
+          "idx": 25,
+          "s3": 6,
+          "local": "26.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353Y2przCES.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 26,
+          "s3": 6,
+          "local": "27.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353KxilZRSQ.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 27,
+          "s3": 6,
+          "local": "28.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353uUmru4XU.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 28,
+          "s3": 6,
+          "local": "29.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813535k1Mu6le.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 29,
+          "s3": 6,
+          "local": "30.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813533ZuokrTz.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 30,
+          "s3": 6,
+          "local": "31.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353TBZyQTub.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 31,
+          "s3": 6,
+          "local": "32.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813537DiuMcAH.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 32,
+          "s3": 6,
+          "local": "33.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353WNWjAytg.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 33,
+          "s3": 6,
+          "local": "34.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353ns0jR7GV.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 34,
+          "s3": 6,
+          "local": "35.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353t7jJdGuJ.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 35,
+          "s3": 6,
+          "local": "36.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353U7xdZ17b.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 36,
+          "s3": 6,
+          "local": "37.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353FSJ6g3cU.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 37,
+          "s3": 6,
+          "local": "38.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353eL9VK9ck.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 38,
+          "s3": 6,
+          "local": "39.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813538eQPbnAI.jpg",
+          "w": 2048,
+          "h": 1329,
+          "idx": 39,
+          "s3": 6,
+          "local": "40.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353KAaJV9Ph.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 40,
+          "s3": 6,
+          "local": "41.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353czTpylQc.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 41,
+          "s3": 6,
+          "local": "42.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813536xwjjQmi.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 42,
+          "s3": 6,
+          "local": "43.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353zBBlgSJl.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 43,
+          "s3": 6,
+          "local": "44.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353godQz3g7.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 44,
+          "s3": 6,
+          "local": "45.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353nhwSpy2X.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 45,
+          "s3": 6,
+          "local": "46.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353NRNvzvkz.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 46,
+          "s3": 6,
+          "local": "47.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353AHJUcIlU.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 47,
+          "s3": 6,
+          "local": "48.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353ShwYZDni.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 48,
+          "s3": 6,
+          "local": "49.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353G09ui3ap.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 49,
+          "s3": 6,
+          "local": "50.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353PNcxFDAH.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 50,
+          "s3": 6,
+          "local": "51.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353iJ6nwhXv.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 51,
+          "s3": 6,
+          "local": "52.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353b3WzgrTv.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 52,
+          "s3": 6,
+          "local": "53.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353OArnqu8f.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 53,
+          "s3": 6,
+          "local": "54.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353AH37EFMg.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 54,
+          "s3": 6,
+          "local": "55.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "18135331uL4x1e.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 55,
+          "s3": 6,
+          "local": "56.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813530AvVKFy3.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 56,
+          "s3": 6,
+          "local": "57.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353A3e5yRbn.jpg",
+          "w": 1367,
+          "h": 2048,
+          "idx": 57,
+          "s3": 6,
+          "local": "58.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353wnUqLLvC.jpg",
+          "w": 1367,
+          "h": 2048,
+          "idx": 58,
+          "s3": 6,
+          "local": "59.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353WCKREBGN.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 59,
+          "s3": 6,
+          "local": "60.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353m2AkEj2P.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 60,
+          "s3": 6,
+          "local": "61.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353ztoqbpvW.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 61,
+          "s3": 6,
+          "local": "62.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353mx4LaAcH.jpg",
+          "w": 1367,
+          "h": 2048,
+          "idx": 62,
+          "s3": 6,
+          "local": "63.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353QfmRvHDO.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 63,
+          "s3": 6,
+          "local": "64.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353WKoVgNvE.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 64,
+          "s3": 6,
+          "local": "65.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353geRB5wQH.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 65,
+          "s3": 6,
+          "local": "66.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353qtUKZchO.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 66,
+          "s3": 6,
+          "local": "67.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353FQzVv1mI.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 67,
+          "s3": 6,
+          "local": "68.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353SEasm2Vj.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 68,
+          "s3": 6,
+          "local": "69.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "1813534MhLQgMV.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 69,
+          "s3": 6,
+          "local": "70.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353woHC042b.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 70,
+          "s3": 6,
+          "local": "71.jpg",
+          "status": "downloaded"
+        },
+        {
+          "file": "181353CsgddtPX.jpg",
+          "w": 2048,
+          "h": 1367,
+          "idx": 71,
+          "s3": 6,
+          "local": "72.jpg",
+          "status": "downloaded"
+        }
+      ]
+    }
+  ]
+}
