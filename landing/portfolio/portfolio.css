@@ -195,40 +195,31 @@ img { display: block; max-width: 100%; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes scaleIn { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
 
-/* ── GALLERY — Desktop horizontal scroll ──────────────────────── */
+/* ═══════════════════════════════════════════════════════════════
+   GALLERY — Mobile-first design
+   Base: 1-col vertical grid
+   ≥540px: 2-col vertical grid
+   ≥1024px AND landscape ratio: horizontal scroll editorial
+   ═══════════════════════════════════════════════════════════════ */
+
 .gallery {
   margin-top: var(--nav-h);
-  flex: 1;
-  display: flex;
-  align-items: center;            /* vertical center photos */
-  gap: 6px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  height: calc(100svh - var(--nav-h) - var(--footer-h));
-  padding: clamp(2rem, 8vh, 5rem) 1.5rem;  /* generous breathing room */
-  scroll-snap-type: x proximity;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+  width: 100%;
+  height: auto;
+  min-height: calc(100svh - var(--nav-h) - var(--footer-h));
 }
-
-.gallery::-webkit-scrollbar { height: 4px; }
-.gallery::-webkit-scrollbar-thumb { background: var(--light); border-radius: 2px; }
-.gallery::-webkit-scrollbar-track { background: transparent; }
 
 .gallery-item {
-  flex: 0 0 auto;
-  height: min(72vh, 680px);
-  cursor: pointer;
-  scroll-snap-align: start;
-  overflow: hidden;
   position: relative;
-  animation: fadeIn .55s var(--ease-out) both;
+  overflow: hidden;
+  cursor: pointer;
   background: var(--off-white);
+  animation: fadeIn .55s var(--ease-out) both;
+  min-width: 0;
 }
-
-/* Explicit width per orientation — keeps photos at consistent height with proper aspect */
-.gallery-item.landscape { width: min(108vh, 1020px); }  /* 3:2 → 72vh × 1.5 */
-.gallery-item.portrait  { width: min(48vh, 453px);  }   /* 2:3 → 72vh × 0.667 */
 
 .gallery-item:nth-child(1)  { animation-delay: .02s; }
 .gallery-item:nth-child(2)  { animation-delay: .06s; }
@@ -241,17 +232,68 @@ img { display: block; max-width: 100%; }
 
 .gallery-item img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  display: block;
   object-fit: cover;
   transition: transform .5s var(--ease), filter .35s var(--ease);
-  display: block;
   will-change: transform;
 }
+
+/* Aspect ratios per orientation in vertical grid mode */
+.gallery-item.landscape img { aspect-ratio: 4 / 3; }
+.gallery-item.portrait  img { aspect-ratio: 3 / 4; }
 
 .gallery-item:hover img,
 .gallery-item:focus-visible img {
   transform: scale(1.035);
   filter: brightness(0.88);
+}
+
+/* ── ≥540px: switch to 2-col vertical grid ────────────────────── */
+@media (min-width: 540px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+}
+
+/* ── ≥1024px landscape: editorial horizontal scroll ───────────── */
+@media (min-width: 1024px) and (min-aspect-ratio: 5/4) {
+  .gallery {
+    display: flex;
+    grid-template-columns: unset;
+    align-items: center;
+    height: calc(100svh - var(--nav-h) - var(--footer-h));
+    min-height: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: clamp(2rem, 6vh, 4.5rem) 1.5rem;
+    gap: 6px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  .gallery::-webkit-scrollbar { height: 4px; }
+  .gallery::-webkit-scrollbar-thumb { background: var(--light); border-radius: 2px; }
+  .gallery::-webkit-scrollbar-track { background: transparent; }
+
+  /* In horizontal mode: container has fixed height + aspect ratio,
+     image fills container with object-fit: cover */
+  .gallery-item {
+    flex: none;
+    height: min(70vh, 640px);
+    scroll-snap-align: start;
+  }
+
+  .gallery-item.landscape { aspect-ratio: 3 / 2; }
+  .gallery-item.portrait  { aspect-ratio: 2 / 3; }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;        /* let container's aspect-ratio drive sizing */
+  }
 }
 
 /* Scroll hint */
@@ -921,37 +963,7 @@ body.lightbox-open .nav { visibility: hidden; }
   }
   .nav-links a::after { display: none; }
 
-  /* GALLERY: switch to vertical masonry */
-  .gallery {
-    height: auto;
-    min-height: calc(100svh - var(--nav-h) - var(--footer-h));
-    flex-direction: column;
-    overflow-x: hidden;
-    overflow-y: visible;
-    scroll-snap-type: none;
-    gap: 2px;
-    padding: 0;
-  }
-
-  .gallery-item {
-    flex: 0 0 auto;
-    width: 100%;
-    height: auto;
-    scroll-snap-align: none;
-    cursor: pointer;
-  }
-
-  .gallery-item img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-  }
-
-  /* Landscape ratio for known wide photos (g12) */
-  .gallery-item[data-index="11"] img { aspect-ratio: 4/3; }
-
+  /* GALLERY mobile: tap feedback (layout handled by mobile-first base) */
   .gallery-item:hover img { transform: none; }
   .gallery-item:active img { transform: scale(0.99); }
 
@@ -1010,62 +1022,7 @@ body.lightbox-open .nav { visibility: hidden; }
   .social-footer { padding: 0 1rem; }
 }
 
-/* ── Tablet portrait & large-phone landscape: 2-col gallery ──── */
-@media (min-width: 540px) and (max-width: 768px) {
-  .gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3px;
-    padding: 0;
-  }
-  .gallery-item {
-    width: 100%;
-    height: auto;
-    max-height: none;
-    aspect-ratio: auto;
-  }
-  .gallery-item img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-  }
-  .gallery-item.landscape img { aspect-ratio: 4/3; }
-  .gallery-item.portrait  img { aspect-ratio: 3/4; }
-}
-
-/* ── Tall / square viewports: switch to vertical 2-col grid ──── */
-@media (min-width: 769px) and (max-aspect-ratio: 5/4) {
-  .gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: max-content;
-    height: auto;
-    min-height: calc(100svh - var(--nav-h) - var(--footer-h));
-    align-items: stretch;
-    overflow-x: hidden;
-    overflow-y: visible;
-    scroll-snap-type: none;
-    padding: 0;
-    gap: 4px;
-  }
-  .gallery-item {
-    flex: none;
-    width: 100%;
-    height: auto;
-    max-height: none;
-    aspect-ratio: auto;
-  }
-  .gallery-item img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-  }
-  .gallery-item.landscape img { aspect-ratio: 4/3; }
-  .gallery-item.portrait  img { aspect-ratio: 3/4; }
-  .scroll-hint { display: none; }
-}
+/* Tablet/desktop-tall layouts handled by base mobile-first rules */
 
 /* ── Extra tight phones ──────────────────────────────────────── */
 @media (max-width: 380px) {
