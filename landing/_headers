@@ -1,0 +1,35 @@
+# Cloudflare Pages headers
+# Docs: https://developers.cloudflare.com/pages/configuration/headers/
+
+# HTML — always revalidate so users get fresh markup
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/portfolio/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# CSS / JS — short cache, must revalidate (browser asks server if changed)
+/*.css
+  Cache-Control: public, max-age=300, must-revalidate
+
+/*.js
+  Cache-Control: public, max-age=300, must-revalidate
+
+# Images and fonts — cache for a week (rarely change, large)
+/*.jpg
+  Cache-Control: public, max-age=604800, immutable
+
+/*.png
+  Cache-Control: public, max-age=604800, immutable
+
+/*.svg
+  Cache-Control: public, max-age=604800, immutable
+
+/*.webp
+  Cache-Control: public, max-age=604800, immutable
+
+/*.woff2
+  Cache-Control: public, max-age=2592000, immutable
