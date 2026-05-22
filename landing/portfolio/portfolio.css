@@ -217,8 +217,8 @@ img { display: block; max-width: 100%; }
 
 .gallery-item {
   flex: 0 0 auto;
-  height: 100%;
-  max-height: 680px;            /* hard cap so photos don't dominate at tall viewports */
+  --photo-h: min(72vh, 680px);
+  height: var(--photo-h);
   cursor: pointer;
   scroll-snap-align: start;
   overflow: hidden;
@@ -227,9 +227,9 @@ img { display: block; max-width: 100%; }
   background: var(--off-white);
 }
 
-/* Aspect ratios per orientation — keeps photos at consistent size */
-.gallery-item.landscape { aspect-ratio: 3/2; }
-.gallery-item.portrait  { aspect-ratio: 2/3; }
+/* Explicit width per orientation — keeps photos at consistent height with proper aspect */
+.gallery-item.landscape { width: calc(var(--photo-h) * 1.5);    }  /* 3:2 */
+.gallery-item.portrait  { width: calc(var(--photo-h) * 0.6667); }  /* 2:3 */
 
 .gallery-item:nth-child(1)  { animation-delay: .02s; }
 .gallery-item:nth-child(2)  { animation-delay: .06s; }
