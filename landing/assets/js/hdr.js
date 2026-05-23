@@ -109,33 +109,29 @@
     if (window.NB_HDR.active || activating) return;
     activating = true;
 
-    // Play the HDR anchor video. This is what flips Safari into EDR
-    // mode on iPhone. `play()` returns a Promise that may reject on
-    // older Safari that requires user-gesture; we ignore the error
-    // and still toggle the class so SDR-only browsers still get the
-    // P3 accent colors (which gracefully clamp to sRGB).
-    if (anchor) {
-      try {
-        anchor.muted    = true;        // belt + suspenders for autoplay
-        anchor.playsInline = true;
-        await anchor.play();
-      } catch (_) {
-        /* play blocked — degrade silently */
-      }
-    }
-
-    // Engage CSS HDR styles.
+    // Engage HDR state IMMEDIATELY (synchronously, before any await).
+    // pointerdown fires this; the corresponding `click` event will fire
+    // milliseconds later, and the fluid renderer's click handler reads
+    // NB_HDR.active to decide whether to inject an HDR "supernova" or
+    // a plain SDR burst. If we awaited the video first, the first click
+    // would still see active=false and miss the HDR explosion.
     root.classList.add('hdr-on');
-
-    // Boost WebGL shader output. The renderer multiplies splat colors
-    // by NB_HDR.boost on every frame, so values cross 1.0 and produce
-    // EDR highlights once the half-float pipeline reaches the screen.
     window.NB_HDR.boost  = 3.4;
     window.NB_HDR.active = true;
-
-    // Signal the fluid renderer in case it wants to reconfigure its
-    // drawing buffer color space on the fly.
     canvas && canvas.dispatchEvent(new CustomEvent('nb:hdr-on'));
+
+    // Then kick off the anchor video. Safari needs an HDR media element
+    // visible to enter EDR rendering mode; Chrome ignores it (it activates
+    // HDR from the canvas content alone). play() can reject on stricter
+    // autoplay policies — we degrade silently so the rest of the pipeline
+    // (CSS HDR + WebGL boost) still works.
+    if (anchor) {
+      try {
+        anchor.muted       = true;
+        anchor.playsInline = true;
+        await anchor.play();
+      } catch (_) { /* play blocked — degrade silently */ }
+    }
 
     activating = false;
   }

@@ -832,8 +832,10 @@ function fluid_init() {
 		// HDR boost is driven by hdr.js. 1.0 = SDR, ~3.4 = full HDR.
 		// We ease it on the GPU side so the transition into EDR feels
 		// like a real "lights coming on" moment rather than a snap.
+		// Faster lerp (0.25) so the first click's explosion is already
+		// rendered at ~90% of peak HDR within ~8 frames (~130 ms @60Hz).
 		const hdrTarget = (window.NB_HDR && window.NB_HDR.boost) || 1.0;
-		_hdrCurrent += (hdrTarget - _hdrCurrent) * 0.08;
+		_hdrCurrent += (hdrTarget - _hdrCurrent) * 0.25;
 		const hdrBoost = _hdrCurrent;
 
 		if (config.SHADING) {
@@ -928,9 +930,16 @@ function fluid_init() {
 	}
 
 	function multipleSplats(amount) {
+		// Scatter splats across the canvas. When HDR is active each one
+		// is 3.5× brighter at the source so it survives dye dissipation
+		// long enough to feel like sustained HDR light, not a flicker.
+		const hdrOn      = !!(window.NB_HDR && window.NB_HDR.active);
+		const multiplier = hdrOn ? 35.0 : 10.0;
 		for (let i = 0; i < amount; i++) {
 			const color = generateColor();
-			color.r *= 10.0; color.g *= 10.0; color.b *= 10.0;
+			color.r *= multiplier;
+			color.g *= multiplier;
+			color.b *= multiplier;
 			const x  = canvas.width  * Math.random();
 			const y  = canvas.height * Math.random();
 			const dx = 1000 * (Math.random() - 0.5);
@@ -965,15 +974,44 @@ function fluid_init() {
 		pointers[0].y     = e.clientY;
 	});
 
-	// --- Click: burst of splats at click position ---
-	document.addEventListener('click', function(e) {
-		for (let i = 0; i < 8; i++) {
-			const color = generateColor();
-			color.r *= 10.0; color.g *= 10.0; color.b *= 10.0;
-			const dx = 800 * (Math.random() - 0.5);
-			const dy = 800 * (Math.random() - 0.5);
-			splat(e.clientX, e.clientY, dx, dy, color);
+	// --- Click burst: supernova-style "explosion of light" ----------
+	// In SDR mode (default first-ever click on Safari, or non-HDR display)
+	// we keep the legacy 10x burst — already vivid.
+	// In HDR mode (NB_HDR.active === true) we stack three overlapping
+	// HDR-white splats at the click point — they accumulate in the
+	// RGBA16F dye texture into a hot "supernova core" that, after the
+	// uHdrBoost (3.4x) multiply, lands at ~25-30x SDR white = peak HDR
+	// brightness on iPhone XDR (~1600 nits). Around it, 12 saturated
+	// satellite splats fly outward at 35x for the colorful flares.
+	function burstAt(x, y) {
+		const hdrOn = !!(window.NB_HDR && window.NB_HDR.active);
+
+		if (hdrOn) {
+			// Hot HDR-white core. Three overlapping splats with zero
+			// velocity → values add up in the half-float dye texture.
+			// Slight cool tint (more blue) so the bloom pass spreads a
+			// believable highlight halo around the core.
+			const core = { r: 6.0, g: 7.0, b: 9.0 };
+			for (let i = 0; i < 3; i++) splat(x, y, 0, 0, core);
 		}
+
+		// Colorful radial flares.
+		const multiplier = hdrOn ? 35.0 : 10.0;
+		const count      = hdrOn ? 12   : 8;
+		const spread     = hdrOn ? 1200 : 800;
+		for (let i = 0; i < count; i++) {
+			const color = generateColor();
+			color.r *= multiplier;
+			color.g *= multiplier;
+			color.b *= multiplier;
+			const dx = spread * (Math.random() - 0.5);
+			const dy = spread * (Math.random() - 0.5);
+			splat(x, y, dx, dy, color);
+		}
+	}
+
+	document.addEventListener('click', function(e) {
+		burstAt(e.clientX, e.clientY);
 	});
 
 	// --- Touch support ---
@@ -992,13 +1030,7 @@ function fluid_init() {
 	canvas.addEventListener('touchstart', function(e) {
 		e.preventDefault();
 		const touch = e.touches[0];
-		for (let i = 0; i < 6; i++) {
-			const color = generateColor();
-			color.r *= 10.0; color.g *= 10.0; color.b *= 10.0;
-			const dx = 600 * (Math.random() - 0.5);
-			const dy = 600 * (Math.random() - 0.5);
-			splat(touch.clientX, touch.clientY, dx, dy, color);
-		}
+		burstAt(touch.clientX, touch.clientY);
 	}, { passive: false });
 
 	// --- Boom button ---
