@@ -4,13 +4,11 @@
 #   200 = rewrite (URL bar shows source, content from destination)
 #   301 = permanent redirect (URL bar changes)
 
-# ── Portafolio ↔ home (200 rewrite: same content, two URLs) ────────
-# /portfolio/portafolio.html and /portfolio/portafolio serve the home gallery.
-# Single source of truth: landing/portfolio/index.html
-/portfolio/portafolio.html  /portfolio/index.html  200
-/portfolio/portafolio       /portfolio/index.html  200
-
 # ── Legacy SEO: /proyectos → /fotografia (301 permanent) ───────────
 # Old portfoliobox/internal links keep working; search engines update.
 /portfolio/proyectos.html   /portfolio/fotografia.html  301
 /portfolio/proyectos        /portfolio/fotografia.html  301
+
+# Note: /portfolio/portafolio.html is generated at build time as a
+# byte-identical copy of /portfolio/index.html (see .github/workflows/deploy.yml).
+# Both URLs serve the same content from a single source.

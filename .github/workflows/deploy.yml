@@ -14,6 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Mirror /portfolio/index.html → /portfolio/portafolio.html so both URLs
+      # serve the same bytes. Single source of truth = index.html in repo.
+      - name: Sync Portafolio mirror page
+        run: cp landing/portfolio/index.html landing/portfolio/portafolio.html
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
