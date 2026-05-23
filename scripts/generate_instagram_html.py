@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT     = Path(__file__).resolve().parent.parent
 MANIFEST = ROOT / "landing" / "portfolio" / "instagram-manifest.json"
 OUT      = ROOT / "landing" / "portfolio" / "instagram.html"
-CSS_VER  = "20260522g"
+CSS_VER  = "20260522h"
 
 
 def post_card(post: dict) -> str:
