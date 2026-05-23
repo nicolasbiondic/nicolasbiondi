@@ -1,0 +1,51 @@
+name: Refresh Instagram
+
+on:
+  schedule:
+    # Every Monday at 06:00 UTC (01:00 Lima)
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run Instagram scraper
+        id: scrape
+        continue-on-error: true
+        run: |
+          python3 scripts/scrape_instagram.py
+          python3 scripts/generate_instagram_html.py
+
+      - name: Commit changes
+        if: steps.scrape.outcome == 'success'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git add landing/portfolio/instagram-manifest.json \
+                  landing/portfolio/instagram.html \
+                  landing/portfolio/img/instagram/
+          git commit -m "chore(instagram): refresh latest posts [skip ci]"
+          git push
+
+      - name: Note rate-limit failure
+        if: steps.scrape.outcome != 'success'
+        run: |
+          echo "::warning::Instagram scrape failed (likely rate-limited)."
+          echo "Manual refresh: run locally with IG_JSON_CACHE pointing to a"
+          echo "browser-captured JSON, then commit."
