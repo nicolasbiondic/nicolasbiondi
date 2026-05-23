@@ -69,9 +69,27 @@
   <link rel="stylesheet" href="assets/css/font-awesome/css/all.min.css" />
 
   <!-- Landing CSS -->
-  <link rel="stylesheet" href="assets/css/landing.css?v=20260410d" />
+  <link rel="stylesheet" href="assets/css/landing.css?v=20260523-hdr" />
 </head>
 <body>
+
+  <!--
+    HDR anchor: tiny HLG (BT.2020 + ARIB-STD-B67) HEVC video.
+    Its sole purpose is to put Safari/WebKit into EDR (Extended Dynamic Range)
+    rendering mode on supported iPhones. Once EDR is unlocked, CSS colors using
+    color(display-p3 ...) with values > 1.0 and the WebGL canvas render in HDR.
+    Kept 8x8 px, fully transparent and clipped to a single pixel, but in the
+    viewport so the compositor keeps EDR active.
+  -->
+  <video id="hdr-anchor"
+    src="assets/video/hdr-anchor.mp4"
+    muted
+    loop
+    playsinline
+    preload="auto"
+    disableremoteplayback
+    aria-hidden="true"
+    tabindex="-1"></video>
 
   <!-- Fluid WebGL background canvas -->
   <canvas id="fluid-canvas"
@@ -199,6 +217,7 @@
   <script src="assets/js/vendor/gsap.min.js"></script>
   <script src="assets/js/fluid-animation.js"></script>
   <script src="assets/js/cursor.js"></script>
+  <script src="assets/js/hdr.js?v=20260523-hdr"></script>
 
 </body>
 </html>

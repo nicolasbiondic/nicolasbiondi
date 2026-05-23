@@ -39,8 +39,53 @@
   --text:         #d9d9d9;
   --title:        #ffffff;
   --accent:       #00E5FF;
+  --accent-hot:   #00E5FF;     /* SDR fallback for HDR glow color */
+  --accent-magenta: #FF2D78;
+  --accent-violet:  #7B00FF;
   --border:       #525357;
   --font:         'Montserrat', 'Hero', sans-serif;
+
+  /* HDR boost multiplier — driven by JS when EDR is active.
+     Browsers without var() fallback to SDR.                       */
+  --hdr-boost: 1;
+}
+
+/* --- Display-P3 wide-gamut upgrade ---------------------------- */
+/* When the display supports P3 we already get richer colors even
+   without HDR activation. These are still SDR (values 0..1) but
+   noticeably more saturated than sRGB.                            */
+@supports (color: color(display-p3 1 1 1)) {
+  :root {
+    --accent:        color(display-p3 0       0.92    1);
+    --accent-hot:    color(display-p3 0       0.95    1);
+    --accent-magenta: color(display-p3 1      0.18    0.47);
+    --accent-violet:  color(display-p3 0.48   0       1);
+  }
+}
+
+/* --- HDR activation (after click on background) --------------- */
+/* `.hdr-on` is added by hdr.js once the anchor video has unlocked
+   EDR mode on Safari. We push color values BEYOND 1.0 in the
+   display-p3 space — these clip in SDR but render at peak HDR
+   brightness on iPhone XDR / iPhone 12+ displays.                */
+@supports (color: color(display-p3 1 1 1)) {
+  html.hdr-on {
+    --accent:        color(display-p3 0      2.6  3.2);
+    --accent-hot:    color(display-p3 1.4    3.0  3.4);
+    --accent-magenta: color(display-p3 3.2   0.6  1.6);
+    --accent-violet:  color(display-p3 1.8   0.4  3.6);
+  }
+}
+
+/* Safari 18+ native HDR opt-in. `no-limit` tells the compositor to
+   use the full available headroom instead of clamping to SDR.
+   Without `.hdr-on` the value is `standard` (default) so SDR is
+   preserved. This complements the anchor-video trick on older iOS. */
+@supports (dynamic-range-limit: no-limit) {
+  html.hdr-on,
+  html.hdr-on body {
+    dynamic-range-limit: no-limit;
+  }
 }
 
 /* --- Reset ---------------------------------------------------- */
@@ -71,6 +116,27 @@ a:hover { color: #fff; }
   width: 100%; height: 100%;
   z-index: 0;
   display: block;
+}
+
+/* --- HDR anchor video ---------------------------------------- */
+/* Tiny HLG/BT.2020 HEVC video. Kept in the viewport (Safari only
+   enters EDR mode when an HDR media element is on screen) but
+   visually invisible: 1x1 px in the corner, fully transparent.
+   `mix-blend-mode: plus-lighter` would also "donate" its HDR to
+   the page on iOS 18, but we keep it transparent to avoid any
+   visible artifact.                                              */
+#hdr-anchor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:  2px;
+  height: 2px;
+  opacity: 0.01;          /* must not be 0 or display:none — Safari needs it composited */
+  pointer-events: none;
+  z-index: -1;
+  /* Keep it on the GPU layer so the compositor treats it as HDR media */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 /* --- Custom cursor ------------------------------------------- */
@@ -548,3 +614,138 @@ body, .card, .bio, .name, .tagline, .tag, .boom-label {
 
 /* Scrollbar / selection */
 ::selection { background: var(--accent); color: #fff; }
+
+/* ================================================================
+   HDR ENHANCEMENTS
+   Applied when `.hdr-on` is set on <html> (after the user clicks
+   on the background and EDR is unlocked). All upgrades are
+   additive — without `.hdr-on` the page renders exactly as before.
+   ================================================================ */
+
+/* Smooth color/glow transition when entering HDR mode */
+.tag,
+.avatar-wrap,
+.social-btn,
+.blob,
+.deco-circle,
+.boom-arc,
+.boom-label,
+.tagline,
+.name {
+  transition:
+    color .6s ease,
+    background-color .6s ease,
+    border-color .6s ease,
+    box-shadow .6s ease,
+    filter .6s ease,
+    opacity .6s ease;
+}
+
+/* --- HDR ON: amplify accents, glows and blobs ---------------- */
+html.hdr-on .tagline,
+html.hdr-on .tag {
+  color: var(--accent-hot);
+}
+
+html.hdr-on .avatar-wrap {
+  border-color: var(--accent-hot);
+  /* The shadow color uses the HDR-extended accent so it actually
+     glows above SDR white on iPhone XDR displays.                 */
+  box-shadow:
+    0 0 24px var(--accent-hot),
+    0 0 56px var(--accent-hot);
+}
+
+html.hdr-on .tag {
+  background: color-mix(in srgb, var(--accent-hot) 14%, transparent);
+  border-color: var(--accent-hot);
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  html.hdr-on .tag {
+    background: color(display-p3 0 0.95 1 / 0.14);
+    border-color: color(display-p3 0 0.95 1 / 0.6);
+  }
+}
+
+html.hdr-on .social-btn:hover {
+  background: var(--accent-hot);
+  border-color: var(--accent-hot);
+  box-shadow: 0 8px 32px var(--accent-hot);
+}
+
+/* Decorative circles + dot grid: brighter outlines in HDR */
+html.hdr-on .deco-circle-1 { border-color: rgba(255,255,255,0.85); }
+html.hdr-on .deco-circle-2 { border-color: var(--accent-hot); }
+html.hdr-on .deco-circle-3 { border-color: var(--accent-hot); }
+
+@supports (color: color(display-p3 1 1 1)) {
+  html.hdr-on .deco-circle-1 {
+    border-color: color(display-p3 2 2 2 / 0.9);   /* HDR white */
+  }
+}
+
+/* Background blobs become genuinely emissive */
+html.hdr-on .blob {
+  opacity: 0.34;
+  filter: blur(72px);
+}
+html.hdr-on .blob-1 {
+  background: radial-gradient(circle, var(--accent-violet) 0%, transparent 70%);
+}
+html.hdr-on .blob-2 {
+  background: radial-gradient(circle, var(--accent-hot) 0%, transparent 70%);
+}
+html.hdr-on .blob-3 {
+  background: radial-gradient(circle, var(--accent-magenta) 0%, transparent 70%);
+  opacity: 0.22;
+}
+
+/* Dot grid: gentle HDR sparkle */
+@supports (color: color(display-p3 1 1 1)) {
+  html.hdr-on .dot-grid {
+    background-image: radial-gradient(
+      circle,
+      color(display-p3 1.6 1.6 1.6) 1.5px,
+      transparent 1.5px
+    );
+    opacity: 0.7;
+  }
+}
+
+/* CLIC button arc: emissive ring once EDR is on */
+html.hdr-on .boom-arc {
+  border-color: var(--accent-hot);
+  box-shadow: 0 0 18px var(--accent-hot);
+}
+html.hdr-on .boom-label { color: var(--accent-hot); }
+
+/* Custom cursor ring picks up HDR glow too */
+html.hdr-on #ball {
+  border-color: var(--accent-hot);
+  box-shadow: 0 0 14px var(--accent-hot);
+}
+
+/* Subtle hint that more is available before activation: a slow,
+   barely-perceptible pulse on the CLIC arc that stops once HDR
+   is on. Respects `prefers-reduced-motion`.                     */
+@media (prefers-reduced-motion: no-preference) {
+  html.hdr-capable:not(.hdr-on) .boom-arc {
+    animation: arc-float 2.2s ease-in-out infinite,
+               hdr-hint 3.2s ease-in-out infinite;
+  }
+  @keyframes hdr-hint {
+    0%, 100% { box-shadow: 0 0 0  rgba(0,229,255,0); }
+    50%      { box-shadow: 0 0 14px rgba(0,229,255,0.55); }
+  }
+}
+
+/* Accessibility: users who explicitly prefer SDR get no HDR boost */
+@media (prefers-contrast: less), (dynamic-range: standard) {
+  html.hdr-on .avatar-wrap,
+  html.hdr-on .social-btn:hover,
+  html.hdr-on .boom-arc,
+  html.hdr-on #ball {
+    box-shadow: none;
+  }
+}
