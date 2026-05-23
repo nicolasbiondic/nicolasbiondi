@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT     = Path(__file__).resolve().parent.parent
 MANIFEST = ROOT / "landing" / "portfolio" / "instagram-manifest.json"
 OUT      = ROOT / "landing" / "portfolio" / "instagram.html"
-CSS_VER  = "20260522h"
+CSS_VER  = "20260523a"
 
 
 def post_card(post: dict) -> str:
@@ -86,9 +86,9 @@ def main() -> int:
       <span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>
     </button>
     <ul class="nav-links" id="nav-links" role="list">
-      <li><a href="/portfolio/">Portafolio</a></li>
+      <li><a href="/portfolio/portafolio.html">Portafolio</a></li>
       <li><a href="/portfolio/about.html">Acerca de mí</a></li>
-      <li><a href="/portfolio/proyectos.html">Proyectos</a></li>
+      <li><a href="/portfolio/fotografia.html">Fotografía</a></li>
       <li><a href="/portfolio/instagram.html" class="active" aria-current="page">Instagram</a></li>
       <li><a href="/portfolio/contacto.html">Contacto</a></li>
     </ul>
