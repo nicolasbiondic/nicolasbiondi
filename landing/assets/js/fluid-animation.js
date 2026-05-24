@@ -930,11 +930,14 @@ function fluid_init() {
 	}
 
 	function multipleSplats(amount) {
-		// Scatter splats across the canvas. When HDR is active each one
-		// is 3.5× brighter at the source so it survives dye dissipation
-		// long enough to feel like sustained HDR light, not a flicker.
+		// Scatter splats across the canvas. In HDR mode the 120x
+		// multiplier injects values directly into the HDR range (peak
+		// ~18 per channel) — same approach as burstAt, so the CLIC
+		// button burst is consistent with click-anywhere bursts.
+		// In SDR mode the legacy 10x produces a vivid but non-HDR
+		// scatter (peak ~1.5).
 		const hdrOn      = !!(window.NB_HDR && window.NB_HDR.active);
-		const multiplier = hdrOn ? 35.0 : 10.0;
+		const multiplier = hdrOn ? 120.0 : 10.0;
 		for (let i = 0; i < amount; i++) {
 			const color = generateColor();
 			color.r *= multiplier;
@@ -977,28 +980,35 @@ function fluid_init() {
 	// --- Click burst: supernova-style "explosion of light" ----------
 	// In SDR mode (default first-ever click on Safari, or non-HDR display)
 	// we keep the legacy 10x burst — already vivid.
-	// In HDR mode (NB_HDR.active === true) we stack three overlapping
-	// HDR-white splats at the click point — they accumulate in the
-	// RGBA16F dye texture into a hot "supernova core" that, after the
-	// uHdrBoost (3.4x) multiply, lands at ~25-30x SDR white = peak HDR
-	// brightness on iPhone XDR (~1600 nits). Around it, 12 saturated
-	// satellite splats fly outward at 35x for the colorful flares.
+	// In HDR mode (NB_HDR.active === true) we inject HDR brightness
+	// DIRECTLY into the dye texture, bypassing the display-time boost
+	// (which is intentionally kept at 1.0 — see hdr.js). This means
+	// only the click bursts hit peak HDR (~1600 nits on iPhone XDR);
+	// cursor movement, which uses tame generateColor() values, stays
+	// strictly SDR. The HDR pixels naturally fade out over ~3-5 s via
+	// the existing dye dissipation, so each click feels like a transient
+	// flash of light rather than a permanent HDR mode.
 	function burstAt(x, y) {
 		const hdrOn = !!(window.NB_HDR && window.NB_HDR.active);
 
 		if (hdrOn) {
 			// Hot HDR-white core. Three overlapping splats with zero
-			// velocity → values add up in the half-float dye texture.
-			// Slight cool tint (more blue) so the bloom pass spreads a
-			// believable highlight halo around the core.
-			const core = { r: 6.0, g: 7.0, b: 9.0 };
+			// velocity accumulate in the RGBA16F dye texture to ~60-84
+			// per channel at the very center — well past the iPhone XDR
+			// EDR ceiling so the supernova clips at peak brightness
+			// (~1600 nits). Cool tint (more blue) for the bloom halo.
+			const core = { r: 20.0, g: 22.0, b: 28.0 };
 			for (let i = 0; i < 3; i++) splat(x, y, 0, 0, core);
 		}
 
-		// Colorful radial flares.
-		const multiplier = hdrOn ? 35.0 : 10.0;
-		const count      = hdrOn ? 12   : 8;
-		const spread     = hdrOn ? 1200 : 800;
+		// Colorful radial flares. In HDR mode the 120x multiplier on a
+		// fully saturated HSV color (max channel ≈ 0.15 after the dim
+		// in generateColor) lands the brightest channel around 18 —
+		// also peak HDR. In SDR mode the legacy 10x keeps the bursts
+		// vivid without ever crossing into HDR.
+		const multiplier = hdrOn ? 120.0 : 10.0;
+		const count      = hdrOn ? 12    : 8;
+		const spread     = hdrOn ? 1200  : 800;
 		for (let i = 0; i < count; i++) {
 			const color = generateColor();
 			color.r *= multiplier;

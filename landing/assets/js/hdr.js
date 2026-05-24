@@ -62,9 +62,14 @@
   window.NB_HDR = {
     active:   false,
     capable:  hdrMQ.matches,
-    /* Multiplier applied to color values in the fluid shader. SDR
-       saturates around 1.0; in EDR mode we push 3-4x to hit peak
-       HDR brightness on iPhone (~1000-1600 nits headroom).        */
+    /* Display-time boost applied to the WebGL canvas output. Kept at
+       1.0 on purpose: a persistent boost would lift the cursor-trail
+       splats (low-brightness colors from generateColor) into HDR too,
+       which we don't want. Instead, click bursts inject HDR values
+       (20-28 per channel) directly into the dye texture via the
+       burstAt helper in fluid-animation.js, so peak HDR (~1600 nits)
+       only happens at click events. Field is preserved so future
+       brief-flash effects can still raise it transiently.            */
     boost:    1.0,
 
     /* --- Diagnostic helper --------------------------------------
@@ -113,10 +118,12 @@
     // pointerdown fires this; the corresponding `click` event will fire
     // milliseconds later, and the fluid renderer's click handler reads
     // NB_HDR.active to decide whether to inject an HDR "supernova" or
-    // a plain SDR burst. If we awaited the video first, the first click
-    // would still see active=false and miss the HDR explosion.
+    // a plain SDR burst. NOTE: we intentionally do NOT raise boost
+    // here — peak HDR (~1600 nits) is injected directly by the click
+    // burst, so cursor movement (which produces low-brightness splats)
+    // stays SDR. The .hdr-on class only controls CSS-side HDR (blobs,
+    // tagline, name halo) which is comfortable persistent ambient HDR.
     root.classList.add('hdr-on');
-    window.NB_HDR.boost  = 3.4;
     window.NB_HDR.active = true;
     canvas && canvas.dispatchEvent(new CustomEvent('nb:hdr-on'));
 
@@ -140,7 +147,6 @@
     if (!window.NB_HDR.active) return;
     if (anchor) { try { anchor.pause(); } catch (_) {} }
     root.classList.remove('hdr-on');
-    window.NB_HDR.boost  = 1.0;
     window.NB_HDR.active = false;
     canvas && canvas.dispatchEvent(new CustomEvent('nb:hdr-off'));
   }
