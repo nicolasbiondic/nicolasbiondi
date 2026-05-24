@@ -210,32 +210,68 @@ a:hover { color: #fff; }
 
 /* Tighter on short laptop screens (≤ 880 px tall: 13" MacBook Air
    1280×800, MBP 14", PC laptops 1366×768, etc). Trims vertical
-   padding, line-heights and section margins so the entire card
-   content — including the contact CTA — fits without scrolling.    */
+   padding, collapses the social links to icon-only circles, drops
+   section labels and the bio's leading paragraph so the entire card
+   — including the contact CTA — fits without internal scroll.       */
 @media (min-width: 769px) and (max-height: 880px) {
   .card           { padding: 1.5em 2.75em; max-height: calc(100vh - 11em); }
   .avatar-outer   { margin-bottom: 0.5em; }
-  .avatar-wrap    { width: 64px; height: 64px; }
+  .avatar-wrap    { width: 56px; height: 56px; }
   .name           { font-size: clamp(1.3em, 2.6vw, 1.8em); margin-bottom: 0.1em; }
   .tagline        { font-size: 0.78em; margin-bottom: 0.4em; }
-  .stats-row      { font-size: 0.7em; margin-bottom: 0.8em; }
-  .tags           { margin-bottom: 0.9em; gap: 0.35em; }
-  .tag            { font-size: 0.66em; padding: 0.2em 0.75em; }
-  .bio            { font-size: 0.82em; line-height: 1.55; margin-bottom: 1em; }
-  .links-label    { margin-bottom: 0.35em; font-size: 0.58em; }
-  .social-links   { margin-bottom: 0.55em; gap: 0.5em; }
-  .social-btn     { font-size: 0.75em; padding: 0.45em 0.9em; }
-  .contact-cta    { margin-top: 0.4em; font-size: 0.72em; }
+  .stats-row      { font-size: 0.7em; margin-bottom: 0.7em; }
+  .tags           { margin-bottom: 0.7em; gap: 0.3em; }
+  .tag            { font-size: 0.62em; padding: 0.15em 0.7em; }
+  .bio            { font-size: 0.82em; line-height: 1.55; margin-bottom: 0.9em; }
+
+  /* Section labels ("REDES" / "PROYECTOS") collapsed — icons and
+     brand-named buttons are self-documenting at this density.       */
+  .links-label    { display: none; }
+
+  /* Social links → circular icon-only chips.                        */
+  .social-links--icons {
+    gap: 0.55em;
+    margin-bottom: 0.7em;
+  }
+  .social-links--icons .social-btn {
+    width: 2.3em;
+    height: 2.3em;
+    padding: 0;
+    border-radius: 50%;
+    gap: 0;
+    justify-content: center;
+  }
+  .social-links--icons .social-label { display: none; }
+  .social-links--icons .social-btn i { font-size: 0.95em; }
+
+  /* Project buttons keep their brand-name labels but slim down.     */
+  .social-links:not(.social-links--icons) {
+    gap: 0.5em;
+    margin-bottom: 0.6em;
+  }
+  .social-links:not(.social-links--icons) .social-btn {
+    font-size: 0.72em;
+    padding: 0.4em 0.85em;
+  }
+
+  /* Contact CTA → single dim line just under the project buttons.   */
+  .contact-cta {
+    margin-top: 0.4em;
+    font-size: 0.65em;
+    line-height: 1.3;
+  }
 }
 
 /* Even tighter for very short screens (≤ 760 px tall: 1366×768 PC
-   laptops). Drops the second link group from view if needed but keeps
-   the contact CTA above the fold.                                   */
+   laptops). Shaves more padding and font sizes to keep everything
+   above the fold.                                                   */
 @media (min-width: 769px) and (max-height: 760px) {
   .card           { padding: 1.25em 2.25em; }
-  .bio            { font-size: 0.78em; line-height: 1.5; margin-bottom: 0.8em; }
-  .stats-row      { margin-bottom: 0.6em; }
-  .tags           { margin-bottom: 0.7em; }
+  .avatar-wrap    { width: 52px; height: 52px; }
+  .bio            { font-size: 0.78em; line-height: 1.5; margin-bottom: 0.7em; }
+  .tags           { margin-bottom: 0.55em; }
+  .social-links--icons { margin-bottom: 0.55em; }
+  .social-links--icons .social-btn { width: 2.1em; height: 2.1em; }
 }
 
 .card::-webkit-scrollbar { width: 4px; }
