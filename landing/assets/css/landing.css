@@ -180,13 +180,6 @@ a:hover { color: #fff; }
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* Reserve 7em at the bottom for the CLIC button. The card is
-     vertically-centered inside the remaining content area, so its
-     bottom edge can never reach the CLIC button (which is positioned
-     absolutely at bottom: 2em of .nicol's padding box, i.e. relative
-     to the viewport bottom — padding-bottom only shifts the flex
-     centering area, not the absolute child).                          */
-  padding-bottom: 7em;
 }
 
 /* --- Card ---------------------------------------------------- */
@@ -200,11 +193,13 @@ a:hover { color: #fff; }
   border-radius: 1.25em;
   padding: 2.5em 3.5em;
   max-width: 640px;
-  /* Matches .nicol's padding-bottom (7em). Flex centers the card in
-     the remaining content area (100vh - 7em), leaving the bottom 7em
-     free for the CLIC button. Internal overflow-y: auto keeps the bio
-     scrollable when content exceeds the available height.            */
-  max-height: calc(100vh - 7em);
+  /* Subtracting 14em from 100vh leaves a 7em margin ABOVE and a 7em
+     margin BELOW the card when it is at its tallest (flex centers it
+     symmetrically inside the viewport). The CLIC button (≈70 px tall,
+     anchored at bottom: 2em of .nicol) sits inside the lower 7em area
+     with ~10 px breathing room above it. When the content is shorter,
+     the card just gets even more margin and stays visually centered. */
+  max-height: calc(100vh - 14em);
   width: 90%;
   text-align: center;
   box-shadow: 0 8px 48px rgba(0,0,0,0.5);
@@ -218,7 +213,7 @@ a:hover { color: #fff; }
    padding, line-heights and section margins so the entire card
    content — including the contact CTA — fits without scrolling.    */
 @media (min-width: 769px) and (max-height: 880px) {
-  .card           { padding: 1.5em 2.75em; max-height: calc(100vh - 7em); }
+  .card           { padding: 1.5em 2.75em; max-height: calc(100vh - 11em); }
   .avatar-outer   { margin-bottom: 0.5em; }
   .avatar-wrap    { width: 64px; height: 64px; }
   .name           { font-size: clamp(1.3em, 2.6vw, 1.8em); margin-bottom: 0.1em; }
@@ -703,33 +698,23 @@ html.hdr-on .avatar-wrap {
 }
 
 /* --- HDR ON: "Nicolás Biondi" headline ---------------------- */
-/* The name itself becomes the focal point: HDR-white text floating
-   above SDR white, with a soft cyan halo that bleeds into the page
-   on EDR-capable displays (iPhone XDR, MacBook Pro mini-LED, etc).
-   On SDR the @supports block is skipped and the SDR rules below
-   render normal white — no change in appearance.                  */
-html.hdr-on .name {
-  /* Bright underline always on in HDR mode (no need to hover) */
-  background-size: 100% 3px;
-}
-
+/* The name becomes HDR-bright white. The glow is intentionally
+   restrained — a single soft cool halo, no thick neon underline —
+   so the text reads as "luminous" rather than "neon sign".
+   The cyan underline keeps its normal 2 px thickness (from
+   .name.underlined on hover); its color upgrades to HDR cyan
+   automatically via the --accent CSS variable.                    */
 @supports (color: color(display-p3 1 1 1)) {
   html.hdr-on .name {
-    /* HDR white — slightly cool to harmonize with the cyan accents.
-       Values > 1.0 in display-p3 read as Extended Dynamic Range:
-       on iPhone XDR this lands at ~1000-1400 nits vs ~100 SDR white. */
-    color: color(display-p3 1.75 1.78 1.85);
+    /* HDR white — slight push above SDR, neutral tint so it doesn't
+       compete with the cyan halo. ~1.5 in display-p3 lands at
+       ~600-900 nits on iPhone XDR vs ~100 nits SDR white.          */
+    color: color(display-p3 1.55 1.55 1.6);
 
-    /* Layered HDR cyan glow — three shadows of increasing radius
-       create a believable luminous halo without the "neon sign"
-       look. The inner one keeps edges crisp; the outer one spreads
-       light onto neighboring pixels (which the OLED panel emits
-       above SDR ceiling).                                          */
-    text-shadow:
-      0 0 2px  color(display-p3 1.6 1.6 1.7 / 0.5),
-      0 0 12px color(display-p3 1.4 3.0 3.4 / 0.45),
-      0 0 32px color(display-p3 1.0 2.4 2.8 / 0.30),
-      0 0 64px color(display-p3 0.6 1.8 2.4 / 0.18);
+    /* Single soft halo. 18 px radius, low alpha, cool cyan — emits
+       just enough light onto neighboring pixels for the EDR halo
+       to be visible without overwhelming the typography.            */
+    text-shadow: 0 0 18px color(display-p3 0.7 1.6 1.9 / 0.35);
   }
 }
 
