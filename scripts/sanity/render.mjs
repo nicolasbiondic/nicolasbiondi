@@ -63,7 +63,9 @@ function orient(w, h) {
   return r > 1.1 ? 'landscape' : r < 0.9 ? 'portrait' : 'square'
 }
 
-const NAV = (active) => `
+const NAV = (active) => {
+  const on = (k) => (active === k ? ' class="active" aria-current="page"' : '')
+  return `
   <nav class="nav" id="nav">
     <a class="nav-logo" href="/portfolio/" aria-label="Nicolás Biondi — Inicio">
       <img src="/portfolio/img/logo.png" alt="Nicolás Biondi" width="120" height="28" />
@@ -72,13 +74,13 @@ const NAV = (active) => `
       <span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>
     </button>
     <ul class="nav-links" id="nav-links" role="list">
-      <li><a href="/portfolio/portafolio.html">Portafolio</a></li>
-      <li><a href="/portfolio/about.html">Acerca de mí</a></li>
-      <li><a href="/portfolio/fotografia.html"${active === 'fotografia' ? ' class="active" aria-current="page"' : ''}>Fotografía</a></li>
-      <li><a href="/portfolio/instagram.html">Instagram</a></li>
-      <li><a href="/portfolio/contacto.html">Contacto</a></li>
+      <li><a href="/portfolio/"${on('portafolio')}>Portafolio</a></li>
+      <li><a href="/portfolio/comercial.html"${on('comercial')}>Comercial</a></li>
+      <li><a href="/portfolio/personal.html"${on('personal')}>Personal</a></li>
+      <li><a href="/portfolio/eventos.html"${on('eventos')}>Eventos</a></li>
     </ul>
   </nav>`
+}
 
 const FOOTER = `
   <footer class="social-footer" role="contentinfo">
@@ -151,10 +153,10 @@ function categoryPage(cat, cols) {
 <body>
 
   <a class="skip-link" href="#main">Ir al contenido</a>
-${NAV('fotografia')}
+${NAV(cat)}
   <header class="project-header">
     <nav class="project-breadcrumb" aria-label="Breadcrumb">
-      <a href="/portfolio/fotografia.html">Fotografía</a>
+      <a href="/portfolio/">Portafolio</a>
       <span class="sep" aria-hidden="true">&rsaquo;</span>
       <span class="current">${meta.title}</span>
     </nav>
@@ -200,10 +202,10 @@ function galleryPage(cat, c) {
 <body>
 
   <a class="skip-link" href="#gallery">Ir al contenido</a>
-${NAV('fotografia')}
+${NAV(cat)}
   <header class="project-header">
     <nav class="project-breadcrumb" aria-label="Breadcrumb">
-      <a href="/portfolio/fotografia.html">Fotografía</a>
+      <a href="/portfolio/">Portafolio</a>
       <span class="sep" aria-hidden="true">&rsaquo;</span>
       <a href="/portfolio/${cat}.html">${meta.title}</a>
       <span class="sep" aria-hidden="true">&rsaquo;</span>

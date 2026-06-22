@@ -1,0 +1,60 @@
+name: Sync from Sanity
+
+# Re-renders the portfolio galleries from Sanity and deploys, whenever
+# content is published in the Studio (via a Sanity webhook -> repository
+# dispatch) or when run manually from the Actions tab.
+on:
+  repository_dispatch:
+    types: [sanity-publish]
+  workflow_dispatch:
+
+# Avoid overlapping runs if several edits are published in quick succession.
+concurrency:
+  group: sanity-sync
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      deployments: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install render deps
+        run: npm ci
+        working-directory: scripts/sanity
+
+      - name: Render portfolio from Sanity
+        env:
+          SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
+        run: node scripts/sanity/render.mjs
+
+      - name: Commit regenerated pages (if any changed)
+        run: |
+          git config user.name  "sanity-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add landing/portfolio
+          if git diff --cached --quiet; then
+            echo "No content changes."
+          else
+            git commit -m "render: sync galleries from Sanity [skip ci]"
+            git push
+          fi
+
+      # Mirror the home page so /portfolio/portafolio.html stays identical
+      # (same as deploy.yml — single source of truth = index.html).
+      - name: Sync Portafolio mirror page
+        run: cp landing/portfolio/index.html landing/portfolio/portafolio.html
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy landing --project-name=nicolasbiondi --branch=master

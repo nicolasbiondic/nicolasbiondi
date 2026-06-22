@@ -9,6 +9,11 @@
 /portfolio/proyectos.html   /portfolio/fotografia.html  301
 /portfolio/proyectos        /portfolio/fotografia.html  301
 
+# ── Contact now lives on the main site (DM X / email) ──────────────
+# The portfolio contact page redirects to the main landing's contact.
+/portfolio/contacto.html    https://nicolasbiondi.com/   301
+/portfolio/contacto         https://nicolasbiondi.com/   301
+
 # Note: /portfolio/portafolio.html is generated at build time as a
 # byte-identical copy of /portfolio/index.html (see .github/workflows/deploy.yml).
 # Both URLs serve the same content from a single source.
