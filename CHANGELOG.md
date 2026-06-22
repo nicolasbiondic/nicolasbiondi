@@ -3,6 +3,28 @@
 All notable changes to the landing page. Dates are deploy dates, not
 authorship. Newest entries on top.
 
+## 2026-06-22
+
+### Added
+- **Cursor-driven particle typography** on the "Nicolás Biondi"
+  headline (`landing/assets/js/particle-text.js`,
+  [`docs/particle-text.md`](./docs/particle-text.md)). The h1's
+  glyphs are rasterized once into an off-screen canvas, sampled
+  every 4 px, and each opaque cell becomes a particle. Particles
+  disperse from the cursor with a 1/distance falloff and spring
+  back to their origin (Hooke + damping). The original text stays
+  in the DOM for screen readers and SEO — the `.is-particleized`
+  class hides it visually so the canvas overlay does the rendering.
+  Auto-mounts on any element with `data-particle-text`.
+
+### Clarified
+- The earlier `docs/ideas-flux.md` referred to the Black Forest Labs
+  image-generation Flux. The "Flux" the project owner had in mind is
+  [Flux UI](https://fluxui.dev), the Livewire / Laravel premium
+  component library — incompatible with this site's static stack.
+  Doc kept as-is for the AI image-generation ideas; a Flux UI port
+  would require migrating to Laravel + Livewire + Tailwind.
+
 ## 2026-05-24
 
 ### Added

@@ -25,6 +25,7 @@ nicolasbiondi/
 │       └── js/
 │           ├── fluid-animation.js   ← WebGL fluid background (Pavel Dobryakov port)
 │           ├── pixel-canvas.js      ← Pixel grid background overlay (see docs/pixel-canvas.md)
+│           ├── particle-text.js     ← Cursor-driven particle typography on .name (see docs/particle-text.md)
 │           ├── cursor.js            ← Custom cursor ring + name underline hover
 │           └── vendor/gsap.min.js   ← GSAP (used by cursor.js)
 ├── scripts/                  ← one-off scrapers for the portfolio / Instagram pages
@@ -65,6 +66,7 @@ Detailed design and architecture notes live in [`docs/`](./docs):
 
 - [`docs/design.md`](./docs/design.md) — color, typography and layout system.
 - [`docs/pixel-canvas.md`](./docs/pixel-canvas.md) — the pixel grid background overlay (API, perf, customization).
+- [`docs/particle-text.md`](./docs/particle-text.md) — the cursor-driven particle typography effect on the "Nicolás Biondi" headline.
 - [`docs/fluid-canvas.md`](./docs/fluid-canvas.md) — the WebGL fluid background (config flags).
 - [`docs/deploy.md`](./docs/deploy.md) — Cloudflare Pages configuration and `_headers` rules.
 - [`docs/ideas-flux.md`](./docs/ideas-flux.md) — proposals for using Flux (Black Forest Labs) to ship better visual assets and to "eat the dog food" of being an AI builder.
