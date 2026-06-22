@@ -6,6 +6,19 @@ authorship. Newest entries on top.
 ## 2026-06-22
 
 ### Added
+- **Sanity CMS scaffold** (decision: Sanity, per the proposal). New
+  `studio/` Sanity Studio (login/cookies/drag-drop editor) with the
+  `collection` schema modeling the 4 categories
+  (portafolio/comercial/personal/eventos) + a drag-to-reorder `images[]`
+  gallery. New `scripts/sanity/migrate.mjs` to import the existing
+  `projects-manifest.json` + 271 photos into Sanity (idempotent;
+  `--dry-run` validated: 12 collections, 271 photos, 63.4 MB, nothing
+  missing). Project `aqmgwuqn`, dataset `production`. See
+  [`docs/sanity-setup.md`](./docs/sanity-setup.md). **Blocked on a write
+  token** — the token provided is read-only (Viewer); migration + Studio
+  deploy need an Editor token. `.gitignore` now excludes `node_modules/`
+  and any `.env*`/`*.sanity-env` so tokens never enter the repo.
+
 - **CMS + platform proposal** ([`docs/cms-proposal.md`](./docs/cms-proposal.md)).
   Deep research (3 parallel investigations + a local image audit) into a
   CMS for creating/editing photo collections in the 4 categories with

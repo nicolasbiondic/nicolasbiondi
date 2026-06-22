@@ -72,6 +72,7 @@ Detailed design and architecture notes live in [`docs/`](./docs):
 - [`docs/ideas-flux.md`](./docs/ideas-flux.md) — proposals for using Flux (Black Forest Labs) to ship better visual assets and to "eat the dog food" of being an AI builder.
 - [`docs/cms-proposal.md`](./docs/cms-proposal.md) — deep-research proposal for a CMS to create/edit photo collections in the 4 categories (login, cookies, drag-drop, visitor stats). Finalists: Sanity (primary) vs Sveltia + Cloudflare.
 - [`docs/optimization.md`](./docs/optimization.md) — image/perf audit with measured AVIF/WebP savings on the real photos, and the optimization plan per CMS path.
+- [`docs/sanity-setup.md`](./docs/sanity-setup.md) — Sanity CMS integration status + how to finish it (project `aqmgwuqn`, the `collection` schema, the migration script, Studio deploy).
 
 See [`CHANGELOG.md`](./CHANGELOG.md) for what changed when.
 

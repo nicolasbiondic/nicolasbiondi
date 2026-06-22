@@ -1,0 +1,126 @@
+# Sanity setup — Nicolás Biondi portfolio CMS
+
+Status of the Sanity integration and how to finish it. The decision and
+rationale are in [`cms-proposal.md`](./cms-proposal.md) (Sanity = primary).
+
+## Project
+
+- **Project ID:** `aqmgwuqn`  (name: *NicolasBiondi*) — public, not a secret.
+- **Dataset:** `production` (currently **empty**).
+- These live in `studio/sanity.config.ts` and `scripts/sanity/migrate.mjs`.
+
+## ⚠️ Token: need an EDITOR token (the one provided was read-only)
+
+The token shared so far authenticates but is **Viewer (read-only)** — it
+cannot create documents or upload image assets (verified: the API returns
+`Insufficient permissions; permission "create" required`). The migration
+and Studio deploy both need write access.
+
+**Create a write token:**
+1. <https://sanity.io/manage> → project **NicolasBiondi** → **API** → **Tokens**.
+2. **Add API token** → name it e.g. `migration`, role **Editor** (or
+   **Deploy Studio** if you also want me to deploy the Studio).
+3. Paste it here, or set it locally:
+   ```bash
+   export SANITY_TOKEN="sk...editor..."
+   ```
+
+> Security: the previously-shared token was pasted in plain text, so it is
+> in the chat history — **rotate/revoke it** in the same Tokens screen once
+> the new one works. Tokens are never written into this repo (the
+> migration reads `SANITY_TOKEN` from the environment only; `.gitignore`
+> blocks `.env*` and `*.sanity-env`).
+
+## What's already built (ready to run)
+
+```
+studio/                      ← Sanity Studio (the editor: login, cookies, drag-drop)
+  sanity.config.ts           ← projectId aqmgwuqn / dataset production
+  sanity.cli.ts              ← deploy target nicolasbiondi.sanity.studio
+  schemaTypes/collection.ts  ← the data model (see below)
+scripts/sanity/migrate.mjs   ← imports manifest + 271 photos into Sanity
+```
+
+### The content model — `collection`
+
+One document per gallery:
+
+| Field | Type | Notes |
+|---|---|---|
+| `title` | string | e.g. "Documental: Cementerio de Nueva Esperanza" |
+| `slug` | slug | URL key, auto from title |
+| `category` | string (radio) | `portafolio` / `comercial` / `personal` / `eventos` |
+| `featured` | boolean | surface on the home Portafolio gallery |
+| `order` | number | sort within a category (lower = first) |
+| `cover` | image | optional; defaults to first photo |
+| `images[]` | array of image (hotspot + alt) | **drag to reorder = gallery order; drag to upload** |
+| `publishedAt` | datetime | |
+
+This satisfies the requirements: **login + session cookies** (Studio),
+**drag-and-drop** (the `images[]` grid), **4 categories** (the `category`
+field). Visitor stats are a separate layer (Cloudflare Web Analytics).
+
+## Steps to finish (once you give an Editor token)
+
+### 1. Run the Studio locally (optional, to look around)
+```bash
+cd studio
+npm install
+npx sanity dev          # http://localhost:3333  (login with your Sanity account)
+```
+
+### 2. Migrate the existing portfolio into Sanity
+```bash
+# from repo root, with a write token in the environment:
+export SANITY_TOKEN="sk...editor..."
+node scripts/sanity/migrate.mjs            # uploads 271 photos + creates 12 collections
+# dry run (no token, no writes) to preview the plan:
+node scripts/sanity/migrate.mjs --dry-run
+```
+The script is **idempotent** (deterministic `_id` per collection via
+`createOrReplace`; Sanity de-dupes identical assets), so re-running is safe.
+
+Validated dry-run plan (all files present, nothing missing):
+
+```
+comercial  : Comercial / Empresarial (28), Retratos empresariales (10),
+             Alimentos (12), Productos (10)
+personal   : Documental: Cementerio de Nueva Esperanza (35),
+             Retratos: Nueva Esperanza (11), Lifestyle (10), Lima (13), Film (32)
+eventos    : Infantiles (16), Matrimonios (22), Mágico Engaño 2017 (72)
+TOTAL      : 271 photos, 63.4 MB
+```
+
+### 3. Deploy the Studio (the hosted editor)
+```bash
+cd studio
+npx sanity deploy        # publishes to https://nicolasbiondi.sanity.studio
+```
+This is the login-protected platform where Nicolás creates/edits
+collections and drags photos to reorder. (Needs a Sanity login or a
+Deploy-Studio token.)
+
+### 4. Render the galleries from Sanity (next code step — I build this)
+Once data is in Sanity, the site galleries are generated from it instead of
+the hand-authored HTML:
+- A build step queries Sanity via GROQ and regenerates the category +
+  collection pages, with images served from the **Sanity image CDN**:
+  `cdn.sanity.io/images/aqmgwuqn/production/<id>-<w>x<h>.jpg?w=1400&auto=format&q=75&fit=max`
+  → automatic **AVIF/WebP + on-the-fly resize + global CDN** (this is the
+  image optimization from [`optimization.md`](./optimization.md), for free).
+- A Sanity **publish webhook → GitHub `repository_dispatch`** retriggers the
+  existing `deploy.yml`, so editing in Studio republishes the site in
+  ~30–60 s.
+
+### 5. Visitor statistics
+Cloudflare dashboard → Pages project → **Metrics** → enable **Web
+Analytics** (free, cookieless, one click). Reports visits, pageviews, top
+pages, referrers, countries, devices.
+
+## Image optimization note
+
+Migrating into Sanity *is* the photo optimization: originals upload once and
+every `<img>` on the site points at the Sanity CDN with `?w=…&auto=format`,
+which serves AVIF/WebP resized to display size. Measured savings on these
+exact photos were **−56% to −91%** (AVIF) before even counting the resize.
+So no build-time WebP/AVIF conversion or `<picture>` markup is needed.

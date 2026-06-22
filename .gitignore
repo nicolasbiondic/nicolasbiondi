@@ -3,6 +3,16 @@ nicol_extracted/
 .wrangler/
 *.deb
 
+# Node deps (Sanity Studio + migration script)
+node_modules/
+studio/dist/
+studio/.sanity/
+
+# Secrets — never commit tokens
+.env
+.env.*
+*.sanity-env
+
 # Mirror page generated at build time from landing/portfolio/index.html
 # See .github/workflows/deploy.yml
 landing/portfolio/portafolio.html

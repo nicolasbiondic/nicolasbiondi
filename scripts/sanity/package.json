@@ -1,0 +1,10 @@
+{
+  "name": "nicolasbiondi-sanity-migrate",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "One-off migration of the portfolio manifest + photos into Sanity",
+  "dependencies": {
+    "@sanity/client": "^6"
+  }
+}
