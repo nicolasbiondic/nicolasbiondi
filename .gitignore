@@ -1,6 +1,7 @@
 nicol.zip
 nicol_extracted/
 .wrangler/
+*.deb
 
 # Mirror page generated at build time from landing/portfolio/index.html
 # See .github/workflows/deploy.yml

@@ -74,12 +74,6 @@ function fluid_init() {
 	let bloomFramebuffers = [];
 	pointers.push(new pointerPrototype());
 
-	// Eased HDR boost target — driven by hdr.js via window.NB_HDR.boost,
-	// approached gently each frame so EDR ramps in smoothly. Declared at
-	// the top of the closure so the recursive render loop can read it
-	// from frame 0 without hitting a temporal-dead-zone error.
-	let _hdrCurrent = 1.0;
-
 	const { gl, ext } = getWebGLContext(canvas);
 
 	if (isMobile()) config.SHADING = false;
@@ -89,18 +83,9 @@ function fluid_init() {
 	}
 
 	function getWebGLContext(canvas) {
-		// Request a wide-gamut, HDR-capable context where supported.
-		// `colorSpace: 'display-p3'` is honored by Safari 16.4+ /
-		// Chrome 111+ and tells the compositor to interpret canvas
-		// output in P3. Browsers that don't recognize the option
-		// simply ignore it and we fall back to sRGB.
 		const params = {
 			alpha: true, depth: false, stencil: false,
-			antialias: false, preserveDrawingBuffer: false,
-			colorSpace: 'display-p3',
-			/* premultipliedAlpha left at default (true) so our
-			   transparent fragments composite cleanly over the
-			   rest of the page during HDR mode.                  */
+			antialias: false, preserveDrawingBuffer: false
 		};
 
 		let gl = canvas.getContext('webgl2', params);
@@ -108,25 +93,10 @@ function fluid_init() {
 		if (!isWebGL2)
 			gl = canvas.getContext('webgl', params) || canvas.getContext('experimental-webgl', params);
 
-		// Promote the drawing buffer to a half-float backing so HDR
-		// values >1.0 actually survive to the screen. Supported on
-		// Safari 17+ / Chrome 119+; older browsers silently no-op.
-		try {
-			if (typeof gl.drawingBufferStorage === 'function') {
-				const ext16f = gl.getExtension('EXT_color_buffer_half_float')
-				             || gl.getExtension('EXT_color_buffer_float');
-				if (ext16f) gl.drawingBufferStorage(gl.RGBA16F, canvas.width, canvas.height);
-			}
-			// Newer Safari exposes `drawingBufferColorSpace` directly.
-			if ('drawingBufferColorSpace' in gl) gl.drawingBufferColorSpace = 'display-p3';
-			if ('unpackColorSpace'        in gl) gl.unpackColorSpace        = 'display-p3';
-		} catch (_) { /* not supported — fall back to SDR sRGB output */ }
-
 		let halfFloat;
 		let supportLinearFiltering;
 		if (isWebGL2) {
 			gl.getExtension('EXT_color_buffer_float');
-			gl.getExtension('EXT_color_buffer_half_float');
 			supportLinearFiltering = gl.getExtension('OES_texture_float_linear');
 		} else {
 			halfFloat = gl.getExtension('OES_texture_half_float');
@@ -261,10 +231,8 @@ function fluid_init() {
         precision highp sampler2D;
         varying vec2 vUv;
         uniform sampler2D uTexture;
-        uniform float uHdrBoost;        // 1.0 = SDR, >1.0 = HDR
         void main () {
             vec3 C = texture2D(uTexture, vUv).rgb;
-            C *= uHdrBoost;             // push beyond 1.0 into EDR
             float a = max(C.r, max(C.g, C.b));
             gl_FragColor = vec4(C, a);
         }
@@ -278,7 +246,6 @@ function fluid_init() {
         uniform sampler2D uBloom;
         uniform sampler2D uDithering;
         uniform vec2 ditherScale;
-        uniform float uHdrBoost;
         void main () {
             vec3 C = texture2D(uTexture, vUv).rgb;
             vec3 bloom = texture2D(uBloom, vUv).rgb;
@@ -287,7 +254,6 @@ function fluid_init() {
             bloom += noise / 800.0;
             bloom = pow(bloom.rgb, vec3(1.0 / 2.2));
             C += bloom;
-            C *= uHdrBoost;             // brighten splats + bloom into HDR
             float a = max(C.r, max(C.g, C.b));
             gl_FragColor = vec4(C, a);
         }
@@ -300,7 +266,6 @@ function fluid_init() {
         varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB;
         uniform sampler2D uTexture;
         uniform vec2 texelSize;
-        uniform float uHdrBoost;
         void main () {
             vec3 L = texture2D(uTexture, vL).rgb;
             vec3 R = texture2D(uTexture, vR).rgb;
@@ -313,7 +278,6 @@ function fluid_init() {
             vec3 l = vec3(0.0, 0.0, 1.0);
             float diffuse = clamp(dot(n, l) + 0.7, 0.7, 1.0);
             C.rgb *= diffuse;
-            C *= uHdrBoost;
             float a = max(C.r, max(C.g, C.b));
             gl_FragColor = vec4(C, a);
         }
@@ -329,7 +293,6 @@ function fluid_init() {
         uniform sampler2D uDithering;
         uniform vec2 ditherScale;
         uniform vec2 texelSize;
-        uniform float uHdrBoost;
         void main () {
             vec3 L = texture2D(uTexture, vL).rgb;
             vec3 R = texture2D(uTexture, vR).rgb;
@@ -348,7 +311,6 @@ function fluid_init() {
             bloom += noise / 800.0;
             bloom = pow(bloom.rgb, vec3(1.0 / 2.2));
             C += bloom;
-            C *= uHdrBoost;
             float a = max(C.r, max(C.g, C.b));
             gl_FragColor = vec4(C, a);
         }
@@ -829,21 +791,11 @@ function fluid_init() {
 			blit(null);
 		}
 
-		// HDR boost is driven by hdr.js. 1.0 = SDR, ~3.4 = full HDR.
-		// We ease it on the GPU side so the transition into EDR feels
-		// like a real "lights coming on" moment rather than a snap.
-		// Faster lerp (0.25) so the first click's explosion is already
-		// rendered at ~90% of peak HDR within ~8 frames (~130 ms @60Hz).
-		const hdrTarget = (window.NB_HDR && window.NB_HDR.boost) || 1.0;
-		_hdrCurrent += (hdrTarget - _hdrCurrent) * 0.25;
-		const hdrBoost = _hdrCurrent;
-
 		if (config.SHADING) {
 			let program = config.BLOOM ? displayBloomShadingProgram : displayShadingProgram;
 			program.bind();
 			gl.uniform2f(program.uniforms.texelSize, 1.0 / width, 1.0 / height);
 			gl.uniform1i(program.uniforms.uTexture, density.read.attach(0));
-			gl.uniform1f(program.uniforms.uHdrBoost, hdrBoost);
 			if (config.BLOOM) {
 				gl.uniform1i(program.uniforms.uBloom, bloom.attach(1));
 				gl.uniform1i(program.uniforms.uDithering, ditheringTexture.attach(2));
@@ -854,7 +806,6 @@ function fluid_init() {
 			let program = config.BLOOM ? displayBloomProgram : displayProgram;
 			program.bind();
 			gl.uniform1i(program.uniforms.uTexture, density.read.attach(0));
-			gl.uniform1f(program.uniforms.uHdrBoost, hdrBoost);
 			if (config.BLOOM) {
 				gl.uniform1i(program.uniforms.uBloom, bloom.attach(1));
 				gl.uniform1i(program.uniforms.uDithering, ditheringTexture.attach(2));
@@ -930,19 +881,9 @@ function fluid_init() {
 	}
 
 	function multipleSplats(amount) {
-		// Scatter splats across the canvas. In HDR mode the 120x
-		// multiplier injects values directly into the HDR range (peak
-		// ~18 per channel) — same approach as burstAt, so the CLIC
-		// button burst is consistent with click-anywhere bursts.
-		// In SDR mode the legacy 10x produces a vivid but non-HDR
-		// scatter (peak ~1.5).
-		const hdrOn      = !!(window.NB_HDR && window.NB_HDR.active);
-		const multiplier = hdrOn ? 120.0 : 10.0;
 		for (let i = 0; i < amount; i++) {
 			const color = generateColor();
-			color.r *= multiplier;
-			color.g *= multiplier;
-			color.b *= multiplier;
+			color.r *= 10.0; color.g *= 10.0; color.b *= 10.0;
 			const x  = canvas.width  * Math.random();
 			const y  = canvas.height * Math.random();
 			const dx = 1000 * (Math.random() - 0.5);
@@ -957,11 +898,6 @@ function fluid_init() {
 		if (canvas.width != w || canvas.height != h) {
 			canvas.width  = w;
 			canvas.height = h;
-			// Re-establish HDR drawing buffer at the new size, if supported.
-			try {
-				if (typeof gl.drawingBufferStorage === 'function')
-					gl.drawingBufferStorage(gl.RGBA16F, w, h);
-			} catch (_) { /* SDR fallback is fine */ }
 			initFramebuffers();
 		}
 	}
@@ -977,45 +913,13 @@ function fluid_init() {
 		pointers[0].y     = e.clientY;
 	});
 
-	// --- Click burst: supernova-style "explosion of light" ----------
-	// In SDR mode (default first-ever click on Safari, or non-HDR display)
-	// we keep the legacy 10x burst — already vivid.
-	// In HDR mode (NB_HDR.active === true) we inject HDR brightness
-	// DIRECTLY into the dye texture, bypassing the display-time boost
-	// (which is intentionally kept at 1.0 — see hdr.js). This means
-	// only the click bursts hit peak HDR (~1600 nits on iPhone XDR);
-	// cursor movement, which uses tame generateColor() values, stays
-	// strictly SDR. The HDR pixels naturally fade out over ~3-5 s via
-	// the existing dye dissipation, so each click feels like a transient
-	// flash of light rather than a permanent HDR mode.
+	// --- Click burst: 8 saturated splats around the click point ----
 	function burstAt(x, y) {
-		const hdrOn = !!(window.NB_HDR && window.NB_HDR.active);
-
-		if (hdrOn) {
-			// Hot HDR-white core. Three overlapping splats with zero
-			// velocity accumulate in the RGBA16F dye texture to ~60-84
-			// per channel at the very center — well past the iPhone XDR
-			// EDR ceiling so the supernova clips at peak brightness
-			// (~1600 nits). Cool tint (more blue) for the bloom halo.
-			const core = { r: 20.0, g: 22.0, b: 28.0 };
-			for (let i = 0; i < 3; i++) splat(x, y, 0, 0, core);
-		}
-
-		// Colorful radial flares. In HDR mode the 120x multiplier on a
-		// fully saturated HSV color (max channel ≈ 0.15 after the dim
-		// in generateColor) lands the brightest channel around 18 —
-		// also peak HDR. In SDR mode the legacy 10x keeps the bursts
-		// vivid without ever crossing into HDR.
-		const multiplier = hdrOn ? 120.0 : 10.0;
-		const count      = hdrOn ? 12    : 8;
-		const spread     = hdrOn ? 1200  : 800;
-		for (let i = 0; i < count; i++) {
+		for (let i = 0; i < 8; i++) {
 			const color = generateColor();
-			color.r *= multiplier;
-			color.g *= multiplier;
-			color.b *= multiplier;
-			const dx = spread * (Math.random() - 0.5);
-			const dy = spread * (Math.random() - 0.5);
+			color.r *= 10.0; color.g *= 10.0; color.b *= 10.0;
+			const dx = 800 * (Math.random() - 0.5);
+			const dy = 800 * (Math.random() - 0.5);
 			splat(x, y, dx, dy, color);
 		}
 	}

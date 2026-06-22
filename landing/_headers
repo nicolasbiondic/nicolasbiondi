@@ -33,9 +33,3 @@
 
 /*.woff2
   Cache-Control: public, max-age=2592000, immutable
-
-# HDR anchor video (HLG HEVC) — small and stable, cache aggressively
-/*.mp4
-  Cache-Control: public, max-age=604800, immutable
-  Accept-Ranges: bytes
-  Content-Type: video/mp4
