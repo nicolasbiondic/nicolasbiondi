@@ -67,7 +67,7 @@ const NAV = (active) => {
   const on = (k) => (active === k ? ' class="active" aria-current="page"' : '')
   return `
   <nav class="nav" id="nav">
-    <a class="nav-logo" href="/portfolio/" aria-label="Nicolás Biondi — Inicio">
+    <a class="nav-logo" href="https://nicolasbiondi.com/" aria-label="Nicolás Biondi — nicolasbiondi.com">
       <img src="/portfolio/img/logo.png" alt="Nicolás Biondi" width="120" height="28" />
     </a>
     <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
