@@ -73,13 +73,18 @@ body {
 a { color: var(--accent); text-decoration: none; transition: color .3s; }
 a:hover { color: #fff; }
 
-/* --- Canvas fluid background --------------------------------- */
-#fluid-canvas {
+/* --- GLSL shader background ---------------------------------- */
+#shader-canvas {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
   z-index: 0;
   display: block;
+  /* CSS fallback if WebGL is unavailable / shader fails to compile */
+  background:
+    radial-gradient(120% 120% at 20% 10%, #12203a 0%, transparent 55%),
+    radial-gradient(120% 120% at 85% 90%, #1a0b33 0%, transparent 55%),
+    var(--bg);
 }
 
 /* --- Pixel canvas overlay ------------------------------------ */

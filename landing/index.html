@@ -69,20 +69,12 @@
   <link rel="stylesheet" href="assets/css/font-awesome/css/all.min.css" />
 
   <!-- Landing CSS -->
-  <link rel="stylesheet" href="assets/css/landing.css?v=20260622-portfolio" />
+  <link rel="stylesheet" href="assets/css/landing.css?v=20260622-shader" />
 </head>
 <body>
 
-  <!-- Fluid WebGL background canvas -->
-  <canvas id="fluid-canvas"
-    data-fluid-bg="#02030F"
-    data-sim-resol="128"
-    data-quality="512"
-    data-density="0.985"
-    data-vorticity="30"
-    data-splat-radius="0.5"
-    data-transparent="false">
-  </canvas>
+  <!-- Animated GLSL shader background (aurora flow-noise). See shader-bg.js -->
+  <canvas id="shader-canvas" aria-hidden="true"></canvas>
 
   <!-- Pixel grid overlay — cursor & click reactive. See docs/pixel-canvas.md -->
   <canvas id="pixel-canvas"
@@ -209,7 +201,7 @@
 
   <!-- Scripts -->
   <script src="assets/js/vendor/gsap.min.js"></script>
-  <script src="assets/js/fluid-animation.js"></script>
+  <script src="assets/js/shader-bg.js?v=20260622-shader"></script>
   <script src="assets/js/pixel-canvas.js?v=20260524-pixel"></script>
   <script src="assets/js/particle-text.js?v=20260622-overflow"></script>
   <script src="assets/js/cursor.js"></script>
