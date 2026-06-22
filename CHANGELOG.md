@@ -45,6 +45,24 @@ authorship. Newest entries on top.
   `cursor.js`'s magnetic-wiggle target list, and the
   `.nicol-boom` mobile `display:none` override are gone.
 
+### Changed (portfolio)
+- **Project breadcrumb typography.** Was `text-transform:
+  uppercase; letter-spacing: 0.1em; font-size: 0.7rem; color:
+  --muted` — which clashed with the title-case H1 immediately
+  below ("Documental: Cementerio de Nueva Esperanza") and with
+  the sentence-case nav above. Now mirrors the nav typography:
+  `font-size: 0.8rem; font-weight: 400; letter-spacing: 0;
+  text-transform: none; color: --grey`. The `.current` node
+  picks up `color: --ink` and `font-weight: 500` for a clear
+  active state. Hover lifts to the brand accent (`#1AB6FF`)
+  via the new `--accent` variable in `:root`, matching the
+  landing page so the two pages share an accent.
+  Mobile breadcrumb size bumped 0.65rem → 0.72rem since
+  sentence case at the smaller size read too cramped.
+  Affects all 15 portfolio pages with `.project-breadcrumb`
+  via the shared `portfolio.css`.
+  Cache buster on the stylesheet `?v=20260523a → ?v=20260622-breadcrumb`.
+
 ### Clarified
 - The earlier `docs/ideas-flux.md` referred to the Black Forest Labs
   image-generation Flux. The "Flux" the project owner had in mind is

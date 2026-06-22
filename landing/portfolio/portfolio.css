@@ -18,6 +18,9 @@
   --light:      #e0e0e0;
   --white:      #fff;
   --off-white:  #fafaf9;
+  /* Single accent — matches landing.css for cross-page brand
+     consistency. Used by interactive states (link hover etc).     */
+  --accent:     #1AB6FF;
 
   /* Layout */
   --nav-h:      60px;
@@ -350,42 +353,52 @@ img { display: block; max-width: 100%; }
   animation: fadeUp .5s var(--ease-out) both;
 }
 
-/* Breadcrumb: subtle decorative trail, never competes with the H1 below */
+/* Breadcrumb: typographically consistent with the .nav above it
+   (Montserrat 400, sentence case, no letter-spacing). The path
+   links sit at the nav's --grey, the current item bumps to --ink
+   and 500 weight so it has presence without competing with the H1
+   below. Hover uses the brand --accent for a subtle lift that
+   matches the landing page.                                       */
 .project-breadcrumb {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  font-size: 0.7rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.8rem;
   font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--grey);
   margin: 0;
+  line-height: 1.4;
 }
 
 .project-breadcrumb a {
-  color: var(--muted);
+  color: var(--grey);
   text-decoration: none;
   transition: color .2s var(--ease);
 }
 
 .project-breadcrumb a:hover,
 .project-breadcrumb a:focus-visible {
-  color: var(--black);
+  color: var(--accent);
 }
 
 .project-breadcrumb .sep {
   color: var(--light);
-  font-size: 0.95em;
+  font-size: 1em;
   letter-spacing: 0;
   display: inline-block;
-  transform: translateY(-1px);
   font-weight: 300;
+  user-select: none;
 }
 
-/* Current item: same muted tone as path — H1 below carries the visual weight */
+/* Current item: dark enough to be clearly the active node, with a
+   slight weight bump. Still smaller than the H1 below — the H1
+   carries the visual weight of the page.                          */
 .project-breadcrumb .current {
-  color: var(--grey);
+  color: var(--ink);
+  font-weight: 500;
 }
 
 .project-header h1 {
@@ -1238,7 +1251,10 @@ body.lightbox-open .nav { visibility: hidden; }
   }
   .project-header h1 { font-size: 1.25rem; }
   .project-header p  { font-size: 0.8rem; }
-  .project-breadcrumb { font-size: 0.65rem; }
+  /* Slightly larger on mobile than before because we dropped the
+     uppercase + letter-spacing — sentence case at 0.65rem reads
+     too cramped. */
+  .project-breadcrumb { font-size: 0.72rem; gap: 0.4rem; }
   .gallery.sub-gallery { padding: 0.5rem 1rem 2rem; }
 
   /* LIGHTBOX mobile */
