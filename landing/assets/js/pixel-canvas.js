@@ -13,7 +13,7 @@
        data-gap="14"
        data-decay="0.94"
        data-radius="100"
-       data-colors='["#0a1b30","#0EA0D9","#1AB6FF","#ffffff"]'
+       data-colors='["#0a0a0a","#404040","#c8c8c8","#ffffff"]'
        data-variant="default"
        data-click-radius="300"></canvas>
 
@@ -39,7 +39,7 @@
     clickRadius: parseFloat(canvas.dataset.clickRadius) || 320,
     clickSpeed:  parseFloat(canvas.dataset.clickSpeed)  || 14,
     variant:     canvas.dataset.variant                 || 'default',
-    colors:      JSON.parse(canvas.dataset.colors       || '["#0a1b30","#0EA0D9","#1AB6FF","#ffffff"]'),
+    colors:      JSON.parse(canvas.dataset.colors       || '["#0a0a0a","#404040","#c8c8c8","#ffffff"]'),
   };
 
   // Convert hex colors to [r,g,b] stops once at init.

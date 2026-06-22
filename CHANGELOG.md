@@ -13,6 +13,9 @@ authorship. Newest entries on top.
   Layered on top of the existing fluid WebGL background. Configurable
   via `data-*` attributes on `<canvas id="pixel-canvas">`. See
   [`docs/pixel-canvas.md`](./docs/pixel-canvas.md).
+  Default gradient is monochrome `near-black → light-gray → white`
+  so the overlay reads as crisp white pixels — the color in the
+  background comes entirely from the fluid canvas underneath.
 - **Documentation set** under `docs/` and a `README.md` at the repo
   root. Previously the project had zero markdown files.
 

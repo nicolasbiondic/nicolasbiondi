@@ -20,7 +20,7 @@ runs as a plain `<script>` tag with no build step.
   data-click-radius="320"
   data-click-speed="14"
   data-variant="default"
-  data-colors='["#0a1b30","#0EA0D9","#1AB6FF","#ffffff"]'></canvas>
+  data-colors='["#0a0a0a","#404040","#c8c8c8","#ffffff"]'></canvas>
 ```
 
 Then load it as a normal script:
@@ -56,7 +56,7 @@ clamped to 2 for retina sharpness without burning GPU).
 | `data-click-radius`| `320`                                                  | Maximum ring radius on click (the ring stops expanding past this).          |
 | `data-click-speed` | `14`                                                   | Ring expansion speed in px/frame at 60 Hz (so ~840 px/sec by default).      |
 | `data-variant`     | `"default"`                                            | `"default"` = sharp squares, `"trail"` = rounded squares, `"glow"` = shadow.|
-| `data-colors`      | `'["#0a1b30","#0EA0D9","#1AB6FF","#ffffff"]'`          | JSON array of hex stops. Intensity 0 → first stop, 1 → last stop.           |
+| `data-colors`      | `'["#0a0a0a","#404040","#c8c8c8","#ffffff"]'`          | JSON array of hex stops. Intensity 0 → first stop, 1 → last stop.           |
 
 > `data-colors` is `JSON.parse`d, so the attribute value MUST be valid
 > JSON. Use single quotes around the attribute and double quotes inside.
@@ -102,12 +102,13 @@ inside a 100 px cursor radius.
 
 ### Change the palette
 
-The default gradient is `dark-blue → mid-blue → accent-blue → white`,
-chosen to match the site's `--accent: #1AB6FF`. To match a different
-accent, supply 3–5 stops via `data-colors`. Stops are interpolated
-linearly in RGB space, so very different hues (e.g. red → green) will
-pass through a muddy mid-tone — keep stops in a single hue family
-unless you want a rainbow.
+The default gradient is `near-black → mid-gray → light-gray → white`,
+chosen to keep the overlay neutral so the color comes from the fluid
+canvas behind it (which already provides the blue, magenta and yellow
+blobs). To tint the pixels, supply 3–5 stops via `data-colors`. Stops
+are interpolated linearly in RGB space, so very different hues (e.g.
+red → green) will pass through a muddy mid-tone — keep stops in a
+single hue family unless you want a rainbow.
 
 ## Performance notes
 
