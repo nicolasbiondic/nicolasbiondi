@@ -5,6 +5,24 @@ authorship. Newest entries on top.
 
 ## 2026-06-22
 
+### Added — Auto-sync from Sanity (CI) + new portfolio menu
+- **`.github/workflows/sanity-sync.yml`**: on a Sanity publish webhook
+  (`repository_dispatch: sanity-publish`) or manual `workflow_dispatch`, it
+  installs the render deps, runs `scripts/sanity/render.mjs` (with the
+  `SANITY_TOKEN` repo secret), commits the regenerated pages `[skip ci]`,
+  mirrors `portafolio.html`, and `wrangler pages deploy`. **Tested end-to-end**
+  — both manual dispatch and `repository_dispatch` runs succeeded. So editing
+  in the Studio republishes the site automatically. The only remaining hop is
+  the Sanity webhook itself, which needs a GitHub fine-grained PAT
+  (Contents: RW) — create it via `scripts/sanity/create-webhook.mjs` or the
+  Sanity manage UI (documented in `docs/sanity-setup.md`).
+- **Menu redesign**: the portfolio nav is now **Portafolio / Comercial /
+  Personal / Eventos** across every page (generated + standalone). Breadcrumb
+  root changed from "Fotografía" to "Portafolio". "Acerca de mí" removed from
+  the menu but `about.html` kept on disk. `contacto.html` now 301-redirects to
+  `https://nicolasbiondi.com/` (the main site is the contact hub) — verified
+  live for both `/portfolio/contacto` and `/portfolio/contacto.html`.
+
 ### Added / Changed — Sanity CMS is LIVE
 - **Migrated** the whole portfolio into Sanity (`aqmgwuqn`/`production`):
   **271 photos + 12 collections** across comercial/personal/eventos, via

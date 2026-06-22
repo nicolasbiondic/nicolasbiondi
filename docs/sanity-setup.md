@@ -125,6 +125,44 @@ To **automate**: add a Sanity **publish webhook → GitHub `repository_dispatch`
 that runs render in CI and commits — editing in Studio then republishes in
 ~30–60 s with no manual step. (Webhook needs the GitHub Action wired; ask me.)
 
+### 4b. Auto-sync on publish (DONE — workflow live, webhook pending PAT)
+
+`.github/workflows/sanity-sync.yml` renders from Sanity and deploys, on:
+- `repository_dispatch` (type `sanity-publish`) — sent by a Sanity webhook
+- `workflow_dispatch` — manual button in the Actions tab
+
+It runs `npm ci` (scripts/sanity) → `node render.mjs` (uses the `SANITY_TOKEN`
+repo secret) → commits the regenerated pages `[skip ci]` → mirrors
+portafolio.html → `wrangler pages deploy`. **Tested end-to-end** (manual
+dispatch + repository_dispatch both succeeded).
+
+**Last hop — the Sanity webhook (needs a GitHub PAT):** GitHub's
+`repository_dispatch` endpoint requires auth, so the webhook must carry a
+**GitHub fine-grained PAT** with **Contents: Read and write** on the repo.
+
+Option A — one command (after creating the PAT):
+```bash
+export SANITY_TOKEN=sk...           # manage-capable token
+export GH_PAT=github_pat_...        # fine-grained, Contents: RW
+node scripts/sanity/create-webhook.mjs
+```
+Option B — Sanity manage UI (sanity.io/manage → API → Webhooks → Create):
+- **URL:** `https://api.github.com/repos/nicolasbiondic/nicolasbiondi/dispatches`
+- **Dataset:** `production`  ·  **Trigger on:** Create, Update, Delete
+- **Filter:** `_type == "collection"`
+- **Projection:** `{"event_type": "sanity-publish"}`
+- **HTTP method:** POST
+- **Headers:** `Authorization: Bearer <GH_PAT>` and `Accept: application/vnd.github+json`
+
+Once set, editing + publishing in the Studio rebuilds & deploys the site
+automatically in ~1 min. Until then, trigger manually:
+`gh workflow run sanity-sync.yml` (or the Actions tab button).
+
+> The `SANITY_TOKEN` repo secret currently holds the read+write token used
+> for migration. After you rotate tokens, replace it with a **Viewer
+> (read-only)** token — render only needs read:
+> `printf %s "<viewer-token>" | gh secret set SANITY_TOKEN`.
+
 ### 5. Visitor statistics
 Cloudflare dashboard → Pages project → **Metrics** → enable **Web
 Analytics** (free, cookieless, one click). Reports visits, pageviews, top
