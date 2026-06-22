@@ -58,6 +58,13 @@
       returnSpeed:     parseFloat(el.dataset.returnSpeed)     || 0.08,
       damping:         parseFloat(el.dataset.damping)         || 0.85,
       color:           el.dataset.color                       || '',
+      // Extra canvas room (in CSS px) on each side so dispersing
+      // particles don't hit the canvas edge and clip. The canvas is
+      // positioned with negative offsets equal to these paddings so
+      // the rendered text still lines up exactly with the host's
+      // original text box.
+      paddingX:        parseFloat(el.dataset.paddingX)        || 100,
+      paddingY:        parseFloat(el.dataset.paddingY)        || 24,
     };
 
     // ---- Canvas overlay ----
@@ -89,17 +96,24 @@
     }
 
     function sampleParticles() {
-      // The host element's box gives us the layout the original
-      // text occupied. We size the canvas to match exactly so the
-      // particles land where the text would have rendered.
+      // The host element's box gives us where the original text
+      // is laid out. We size the canvas LARGER than that (+ padding
+      // on each side) and shift it left/up with negative CSS offsets
+      // so the rendered text still lands exactly where the host text
+      // would have, but particles have free room to disperse without
+      // hitting a canvas edge and getting clipped.
       const rect = el.getBoundingClientRect();
-      const w = Math.max(1, Math.ceil(rect.width));
-      const h = Math.max(1, Math.ceil(rect.height));
+      const innerW = Math.max(1, Math.ceil(rect.width));
+      const innerH = Math.max(1, Math.ceil(rect.height));
+      const w = innerW + cfg.paddingX * 2;
+      const h = innerH + cfg.paddingY * 2;
 
       canvas.width  = Math.floor(w * dpr);
       canvas.height = Math.floor(h * dpr);
       canvas.style.width  = w + 'px';
       canvas.style.height = h + 'px';
+      canvas.style.left   = (-cfg.paddingX) + 'px';
+      canvas.style.top    = (-cfg.paddingY) + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       // Rasterize the text into an off-screen canvas using the
@@ -126,9 +140,9 @@
       octx.textBaseline = 'middle';
       octx.textAlign = 'left';
       octx.fillStyle = '#ffffff';
-      // Center vertically; horizontal start at 0 matches the
-      // host's text-anchor.
-      octx.fillText(text, 0, h / 2);
+      // Render at the inner origin (paddingX, h/2) so the visible
+      // glyphs align with where the host's text would be.
+      octx.fillText(text, cfg.paddingX, h / 2);
 
       // Sample alpha channel on a coarse grid; every cell whose
       // alpha is above ~50% becomes a particle.

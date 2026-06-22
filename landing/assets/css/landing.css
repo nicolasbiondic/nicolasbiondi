@@ -112,7 +112,7 @@ a:hover { color: #fff; }
   left: 0;
   width: 32px;
   height: 32px;
-  border: 1.5px solid rgba(0, 229, 255, 0.6);
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
   border-radius: 50%;
   background: transparent;
   pointer-events: none;
@@ -306,15 +306,18 @@ a:hover { color: #fff; }
 
 .particle-text-canvas {
   position: absolute;
-  top: 0;
-  left: 0;
-  width:  100%;
-  height: 100%;
+  /* The script sets `top`, `left`, `width` and `height` in pixels
+     based on the host's bounding box plus a configurable padding
+     (defaults: 100 px horizontal, 24 px vertical). Negative offsets
+     let dispersing particles fly OUTSIDE the host's text box without
+     hitting the canvas edge and clipping. */
   pointer-events: none;
-  /* The dots already sit on top of the (now transparent) text, so
-     no extra z-index needed — but a touch of soft glow gives the
-     cursor interaction a more "alive" feel without becoming a
-     full-on HDR experiment.                                       */
+  /* Allow the canvas to render outside the bounds of its host (the
+     h1.name). Without this the parent's overflow:visible (default)
+     already lets the canvas spill out, but we also need every
+     ancestor that has overflow:auto / hidden to leave us alone
+     vertically — handled by .card { overflow: visible } below.    */
+  z-index: 5;
   filter: drop-shadow(0 0 1px rgba(255,255,255,0.45));
 }
 
