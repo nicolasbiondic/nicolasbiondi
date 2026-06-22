@@ -42,6 +42,10 @@
     colors:      JSON.parse(canvas.dataset.colors       || '["#0a0a0a","#404040","#c8c8c8","#ffffff"]'),
   };
 
+  // Optional inline blend-mode override (the CSS default is `screen`).
+  // Useful values: 'screen', 'lighten', 'plus-lighter', 'color-dodge'.
+  if (canvas.dataset.blendMode) canvas.style.mixBlendMode = canvas.dataset.blendMode;
+
   // Convert hex colors to [r,g,b] stops once at init.
   const stops = cfg.colors.map(hexToRgb);
 

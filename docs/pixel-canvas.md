@@ -41,10 +41,36 @@ clamped to 2 for retina sharpness without burning GPU).
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  z-index: 0;            /* same plane as other background layers   */
-  pointer-events: none;  /* clicks pass through to canvas / page    */
+  z-index: 0;                 /* same plane as other background layers   */
+  pointer-events: none;       /* clicks pass through to canvas / page    */
+  mix-blend-mode: screen;     /* lighten the fluid underneath, never darken */
 }
 ```
+
+### Blend mode
+
+The canvas uses `mix-blend-mode: screen` so each pixel it draws
+**adds light** to whatever fluid pixel is underneath instead of
+painting over it:
+
+```
+result.rgb = 1 − (1 − source.rgb) · (1 − destination.rgb)
+```
+
+A pure-white pixel lifts the destination to full white. A mid-gray
+pixel adds a subtle glow. A black pixel is a no-op. Combined with
+the cells' alpha (which scales with `intensity`), idle / faded cells
+disappear cleanly into the fluid below.
+
+Alternatives worth trying via `data-blend-mode`:
+
+| Value          | Feel                                                           |
+| -------------- | -------------------------------------------------------------- |
+| `screen`       | Default. Soft additive glow. Never blows out.                  |
+| `lighten`      | Hard `max(src, dst)` per channel. Pixels disappear over bright spots. |
+| `plus-lighter` | Pure addition, clamped at 1.0. Punchier, can blow out.         |
+| `color-dodge`  | Saturated "burn-in" effect. Very bright at the peaks.          |
+| `normal`       | No blending — pixel paints over the fluid (the old behavior).  |
 
 ## `data-*` API
 
@@ -57,6 +83,7 @@ clamped to 2 for retina sharpness without burning GPU).
 | `data-click-speed` | `14`                                                   | Ring expansion speed in px/frame at 60 Hz (so ~840 px/sec by default).      |
 | `data-variant`     | `"default"`                                            | `"default"` = sharp squares, `"trail"` = rounded squares, `"glow"` = shadow.|
 | `data-colors`      | `'["#0a0a0a","#404040","#c8c8c8","#ffffff"]'`          | JSON array of hex stops. Intensity 0 → first stop, 1 → last stop.           |
+| `data-blend-mode`  | (CSS default `screen`)                                  | Overrides the canvas blend mode at runtime. See table below.                 |
 
 > `data-colors` is `JSON.parse`d, so the attribute value MUST be valid
 > JSON. Use single quotes around the attribute and double quotes inside.

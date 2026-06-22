@@ -67,6 +67,7 @@ Detailed design and architecture notes live in [`docs/`](./docs):
 - [`docs/pixel-canvas.md`](./docs/pixel-canvas.md) — the pixel grid background overlay (API, perf, customization).
 - [`docs/fluid-canvas.md`](./docs/fluid-canvas.md) — the WebGL fluid background (config flags).
 - [`docs/deploy.md`](./docs/deploy.md) — Cloudflare Pages configuration and `_headers` rules.
+- [`docs/ideas-flux.md`](./docs/ideas-flux.md) — proposals for using Flux (Black Forest Labs) to ship better visual assets and to "eat the dog food" of being an AI builder.
 
 See [`CHANGELOG.md`](./CHANGELOG.md) for what changed when.
 

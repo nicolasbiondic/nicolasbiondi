@@ -14,8 +14,19 @@ authorship. Newest entries on top.
   via `data-*` attributes on `<canvas id="pixel-canvas">`. See
   [`docs/pixel-canvas.md`](./docs/pixel-canvas.md).
   Default gradient is monochrome `near-black → light-gray → white`
-  so the overlay reads as crisp white pixels — the color in the
-  background comes entirely from the fluid canvas underneath.
+  so the overlay reads as crisp pixels — the color comes entirely
+  from the fluid canvas underneath.
+- **`mix-blend-mode: screen`** on the pixel canvas so each pixel
+  LIGHTENS the fluid below instead of painting over it. The cursor
+  trail and click rings now glow through the existing colors. An
+  optional `data-blend-mode` attribute on the canvas exposes the
+  knob for experimenting with `lighten`, `plus-lighter`,
+  `color-dodge` etc.
+- **`docs/ideas-flux.md`** — written proposal for using Black Forest
+  Labs' Flux models (Flux.1 dev/pro, Flux Kontext, Flux Schnell) to
+  generate per-route OG images, project hero banners, tag icons,
+  time-of-day backgrounds and more. Ranked by impact / effort with
+  cost estimates.
 - **Documentation set** under `docs/` and a `README.md` at the repo
   root. Previously the project had zero markdown files.
 
