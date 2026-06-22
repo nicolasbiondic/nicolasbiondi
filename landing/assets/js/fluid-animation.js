@@ -947,15 +947,6 @@ function fluid_init() {
 		burstAt(touch.clientX, touch.clientY);
 	}, { passive: false });
 
-	// --- Boom button ---
-	var boom = document.querySelector('.nicol-boom');
-	if (boom) {
-		boom.addEventListener('click', function(e) {
-			e.stopPropagation();
-			multipleSplats(parseInt(Math.random() * 20) + 5);
-		});
-	}
-
 	function generateColor() {
 		let c = HSVtoRGB(Math.random(), 1.0, 1.0);
 		c.r *= 0.15; c.g *= 0.15; c.b *= 0.15;

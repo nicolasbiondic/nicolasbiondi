@@ -550,64 +550,51 @@ a:hover { color: #fff; }
   opacity: 0.5;
 }
 
-/* --- CLIC button — centered bottom --------------------------- */
-.nicol-boom {
-  position: absolute;
-  bottom: 2em;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  background: transparent;
-  border: none;
-  display: flex;
-  flex-direction: column;
+/* --- Portfolio CTA — primary action inside the card ---------- */
+/* Sits inside the card flow between Proyectos and the contact CTA.
+   Visually a pill button with the same scale as .social-btn but
+   slightly more weight (own block, full-width-ish, accent on hover)
+   to read as the primary "where to go next" action.               */
+.portfolio-cta {
+  display: inline-flex;
   align-items: center;
-  gap: 0.5em;
-  padding: 0;
-  opacity: 0.65;
-  transition: opacity .3s;
-}
-
-.nicol-boom:hover { opacity: 1; }
-
-/* Circle that grows from half to full on hover */
-.boom-arc {
-  display: block;
-  width: 38px;
-  height: 38px;
-  border: 1.5px solid rgba(255,255,255,0.55);
-  border-radius: 50%;
-  /* clip bottom half: only top semicircle visible at rest */
-  clip-path: inset(0 0 50% 0);
-  transition: clip-path 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 0.3s;
-  animation: arc-float 2.2s ease-in-out infinite;
-}
-
-.nicol-boom:hover .boom-arc {
-  clip-path: inset(0 0 0% 0);   /* full circle */
-  border-color: var(--accent);
-  animation-play-state: paused;
-}
-
-@keyframes arc-float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-5px); }
-}
-
-.boom-label {
+  justify-content: center;
+  gap: 0.7em;
+  margin: 1em auto 0.5em;
+  padding: 0.7em 1.6em;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 0.5em;
+  color: var(--title);
   font-family: var(--font);
-  font-size: 0.6em;
+  font-size: 0.78em;
   font-weight: 600;
-  letter-spacing: 0.3em;
-  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  transition: color .3s;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background .3s ease,
+    border-color .3s ease,
+    color .3s ease,
+    transform .3s ease,
+    box-shadow .3s ease;
 }
 
-.nicol-boom:hover .boom-label {
-  color: var(--accent);
+.portfolio-cta:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26,182,255,0.35);
 }
+
+.portfolio-cta i {
+  font-size: 0.85em;
+  transition: transform .3s ease;
+}
+
+.portfolio-cta:hover i { transform: translateX(4px); }
 
 /* --- Mobile -------------------------------------------------- */
 @media (max-width: 768px) {
@@ -652,11 +639,12 @@ a:hover { color: #fff; }
   /* Contact CTA */
   .contact-cta { font-size: 0.7em; margin-top: 0.75em; }
 
-  /* Hide CLIC button and decorative elements on mobile */
-  .nicol-boom { display: none; }
+  /* Hide decorative-only elements on mobile (the portfolio CTA
+     stays — it's the main navigation cue out of the landing).     */
   .deco-circle-1, .deco-circle-2, .deco-circle-3 { display: none; }
   .dot-grid { display: none; }
   .bg-blobs { opacity: 0.6; }
+  .portfolio-cta { font-size: 0.72em; padding: 0.6em 1.3em; }
 
   /* Wrapper: centered, scrollable if card overflows */
   .nicol {
@@ -668,7 +656,7 @@ a:hover { color: #fff; }
 }
 
 /* Disable text selection globally */
-body, .card, .bio, .name, .tagline, .tag, .boom-label {
+body, .card, .bio, .name, .tagline, .tag {
   user-select: none;
   -webkit-user-select: none;
 }

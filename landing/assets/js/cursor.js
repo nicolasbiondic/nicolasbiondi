@@ -31,13 +31,13 @@
 
 /* ================================================================
    2. Magnetic wiggle — replicates Nicol theme's parallaxIt()
-      Applied to: .social-btn, .tag, .nicol-boom
+      Applied to: .social-btn, .tag, .portfolio-cta
    ================================================================ */
 (function () {
   var MOVEMENT = 10;   // max px displacement (theme uses 25, more subtle here)
   var EASE_OUT = 'power2.out';
 
-  document.querySelectorAll('.social-btn, .tag, .nicol-boom').forEach(function (el) {
+  document.querySelectorAll('.social-btn, .tag, .portfolio-cta').forEach(function (el) {
     el.addEventListener('mousemove', function (e) {
       var rect   = el.getBoundingClientRect();
       var relX   = e.clientX - rect.left;

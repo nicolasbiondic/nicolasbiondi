@@ -16,6 +16,34 @@ authorship. Newest entries on top.
   in the DOM for screen readers and SEO — the `.is-particleized`
   class hides it visually so the canvas overlay does the rendering.
   Auto-mounts on any element with `data-particle-text`.
+- **"Ver portafolio" CTA inside the card**. Pill-shaped link to
+  `/portfolio/`, placed between the Proyectos buttons and the
+  contact CTA, with an `fa-arrow-right` that nudges to the right
+  on hover and a full accent-blue fill on hover. Visible on both
+  desktop and mobile (the previous `.nicol-boom` was hidden on
+  mobile, so the portfolio was unreachable from a phone).
+
+### Changed
+- **Particle text canvas padding**. The canvas was sized exactly
+  to the host's bounding box, so dispersing particles hit the
+  edge and clipped. New `data-padding-x` (100 px default) and
+  `data-padding-y` (24 px default) let the canvas extend beyond
+  the host with negative CSS offsets, so particles fly into the
+  surrounding area and overlap neighboring elements during
+  dispersion.
+- **Custom cursor color**. The `#ball` ring border was hardcoded
+  to the old cyan `rgba(0, 229, 255, 0.6)` predating the accent
+  shift; changed to `rgba(255, 255, 255, 0.75)` so the cursor is
+  the bright neutral focal point against the new blue accent.
+
+### Removed
+- **`.nicol-boom` CLIC button**. The "decorative half-circle +
+  CLIC label" floating below the card had no functional purpose
+  (the document already fires a fluid splat on every click). All
+  CSS, the `arc-float` keyframes, the click handler in
+  `fluid-animation.js`, the `.nicol-boom` reference in
+  `cursor.js`'s magnetic-wiggle target list, and the
+  `.nicol-boom` mobile `display:none` override are gone.
 
 ### Clarified
 - The earlier `docs/ideas-flux.md` referred to the Black Forest Labs
