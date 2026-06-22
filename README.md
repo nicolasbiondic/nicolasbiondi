@@ -70,6 +70,8 @@ Detailed design and architecture notes live in [`docs/`](./docs):
 - [`docs/fluid-canvas.md`](./docs/fluid-canvas.md) — the WebGL fluid background (config flags).
 - [`docs/deploy.md`](./docs/deploy.md) — Cloudflare Pages configuration and `_headers` rules.
 - [`docs/ideas-flux.md`](./docs/ideas-flux.md) — proposals for using Flux (Black Forest Labs) to ship better visual assets and to "eat the dog food" of being an AI builder.
+- [`docs/cms-proposal.md`](./docs/cms-proposal.md) — deep-research proposal for a CMS to create/edit photo collections in the 4 categories (login, cookies, drag-drop, visitor stats). Finalists: Sanity (primary) vs Sveltia + Cloudflare.
+- [`docs/optimization.md`](./docs/optimization.md) — image/perf audit with measured AVIF/WebP savings on the real photos, and the optimization plan per CMS path.
 
 See [`CHANGELOG.md`](./CHANGELOG.md) for what changed when.
 

@@ -6,6 +6,27 @@ authorship. Newest entries on top.
 ## 2026-06-22
 
 ### Added
+- **CMS + platform proposal** ([`docs/cms-proposal.md`](./docs/cms-proposal.md)).
+  Deep research (3 parallel investigations + a local image audit) into a
+  CMS for creating/editing photo collections in the 4 categories with
+  login, session cookies, drag-and-drop, and visitor statistics. Two
+  finalists: **Sanity** (primary — hosted SaaS, zero-ops, built-in image
+  CDN that auto-serves AVIF/WebP + resize, $0) and **Sveltia CMS +
+  Cloudflare** (alternative — git-based, R2 media, Transformations,
+  Web Analytics, 100% on Cloudflare, $0). Rejected Decap/Pages CMS/Tina/
+  Directus/Payload/Strapi with reasons. Visitor stats layer: Cloudflare
+  Web Analytics (free, cookieless).
+- **Optimization audit** ([`docs/optimization.md`](./docs/optimization.md)).
+  304 portfolio images, 74.7 MB, all JPEG, zero WebP/AVIF. Measured
+  conversions on the real photos: **AVIF −56% to −91%**, WebP irregular
+  (−14% to −78%). Confirmed gzip/brotli is already automatic on Pages for
+  text and is a no-op for images; the real win is **AVIF + resize** (source
+  photos are 2048 px). Strategy is coupled to the CMS choice (Sanity CDN /
+  Cloudflare Transformations / build-time `<picture>`), so the 304-image
+  migration is deliberately deferred until the CMS path is picked.
+- `_headers`: added `/*.avif` (immutable 1-week cache) so AVIF is ready for
+  whichever optimization path is chosen.
+
 - **Cursor-driven particle typography** on the "Nicolás Biondi"
   headline (`landing/assets/js/particle-text.js`,
   [`docs/particle-text.md`](./docs/particle-text.md)). The h1's

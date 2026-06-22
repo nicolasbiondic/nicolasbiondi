@@ -31,5 +31,8 @@
 /*.webp
   Cache-Control: public, max-age=604800, immutable
 
+/*.avif
+  Cache-Control: public, max-age=604800, immutable
+
 /*.woff2
   Cache-Control: public, max-age=2592000, immutable
