@@ -9,12 +9,23 @@ rationale are in [`cms-proposal.md`](./cms-proposal.md) (Sanity = primary).
 - **Dataset:** `production` (currently **empty**).
 - These live in `studio/sanity.config.ts` and `scripts/sanity/migrate.mjs`.
 
-## ⚠️ Token: need an EDITOR token (the one provided was read-only)
+## Status: MIGRATED + RENDERED ✅ (2026-06-22)
 
-The token shared so far authenticates but is **Viewer (read-only)** — it
-cannot create documents or upload image assets (verified: the API returns
-`Insufficient permissions; permission "create" required`). The migration
-and Studio deploy both need write access.
+- **271 photos + 12 collections imported** into Sanity (`aqmgwuqn`/`production`).
+- **Site galleries now render from Sanity** with `cdn.sanity.io?auto=format`
+  images (AVIF/WebP + resize). Measured: a 293 KB JPEG → 129 KB WebP (−56%)
+  straight from the CDN; AVIF in real browsers is smaller still.
+- Slugs aligned to the existing URLs, so no links broke.
+
+Remaining manual steps (need your action): **deploy the Studio**
+(`cd studio && npx sanity deploy`) and **enable Cloudflare Web Analytics**
+(dashboard toggle). Optionally automate re-render via a publish webhook.
+
+### Editor token note
+
+The first token shared was **Viewer (read-only)** — it could not write. The
+second token (developer read+write) was used for the migration. Both were
+pasted in chat: **rotate/revoke them** in sanity.io/manage → API → Tokens.
 
 **Create a write token:**
 1. <https://sanity.io/manage> → project **NicolasBiondi** → **API** → **Tokens**.
@@ -100,17 +111,19 @@ This is the login-protected platform where Nicolás creates/edits
 collections and drags photos to reorder. (Needs a Sanity login or a
 Deploy-Studio token.)
 
-### 4. Render the galleries from Sanity (next code step — I build this)
-Once data is in Sanity, the site galleries are generated from it instead of
-the hand-authored HTML:
-- A build step queries Sanity via GROQ and regenerates the category +
-  collection pages, with images served from the **Sanity image CDN**:
-  `cdn.sanity.io/images/aqmgwuqn/production/<id>-<w>x<h>.jpg?w=1400&auto=format&q=75&fit=max`
-  → automatic **AVIF/WebP + on-the-fly resize + global CDN** (this is the
-  image optimization from [`optimization.md`](./optimization.md), for free).
-- A Sanity **publish webhook → GitHub `repository_dispatch`** retriggers the
-  existing `deploy.yml`, so editing in Studio republishes the site in
-  ~30–60 s.
+### 4. Render the galleries from Sanity ✅ DONE
+`scripts/sanity/render.mjs` queries Sanity (GROQ) and regenerates the 3
+category pages + 12 gallery pages, matching the current markup exactly, with
+images from the **Sanity image CDN** (`?w=1600&auto=format&q=72&fit=max` →
+AVIF/WebP + resize). Re-run after editing in Studio:
+```bash
+source /tmp/opencode/.sanity-env   # (or export SANITY_TOKEN=…)
+node scripts/sanity/render.mjs
+git add landing/portfolio && git commit -m "render: sync from Sanity" && git push
+```
+To **automate**: add a Sanity **publish webhook → GitHub `repository_dispatch`**
+that runs render in CI and commits — editing in Studio then republishes in
+~30–60 s with no manual step. (Webhook needs the GitHub Action wired; ask me.)
 
 ### 5. Visitor statistics
 Cloudflare dashboard → Pages project → **Metrics** → enable **Web

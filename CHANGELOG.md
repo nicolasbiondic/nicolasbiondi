@@ -5,8 +5,23 @@ authorship. Newest entries on top.
 
 ## 2026-06-22
 
-### Added
-- **Sanity CMS scaffold** (decision: Sanity, per the proposal). New
+### Added / Changed — Sanity CMS is LIVE
+- **Migrated** the whole portfolio into Sanity (`aqmgwuqn`/`production`):
+  **271 photos + 12 collections** across comercial/personal/eventos, via
+  `scripts/sanity/migrate.mjs` (idempotent). Slugs aligned to existing URLs
+  with `scripts/sanity/patch-slugs.mjs` so nothing broke.
+- **Site galleries now render from Sanity** (`scripts/sanity/render.mjs`):
+  the 3 category pages + 12 gallery pages are regenerated with images served
+  from the **Sanity image CDN** (`?w=1600&auto=format&q=72&fit=max`) —
+  automatic **AVIF/WebP + resize + global CDN**. Measured straight from the
+  CDN: a 293 KB JPEG → 129 KB WebP (**−56%**); AVIF in real browsers is
+  smaller still. This delivers the image-optimization requirement. Markup
+  (nav, breadcrumb, lightbox, footer, skip-links) is byte-identical to the
+  hand-tuned pages — only the image `src` changed to CDN URLs.
+- Pending (need owner action): deploy the Studio
+  (`cd studio && npx sanity deploy`) and enable Cloudflare Web Analytics.
+
+### Added — Sanity CMS scaffold (decision: Sanity, per the proposal). New
   `studio/` Sanity Studio (login/cookies/drag-drop editor) with the
   `collection` schema modeling the 4 categories
   (portafolio/comercial/personal/eventos) + a drag-to-reorder `images[]`
