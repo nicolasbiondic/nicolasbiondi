@@ -52,7 +52,6 @@
    ════════════════════════════════════════════════════════════════ */
 (function () {
   const gallery   = document.getElementById('gallery');
-  const scrollHint = document.getElementById('scroll-hint');
   const lightbox  = document.getElementById('lightbox');
   if (!gallery || !lightbox) return;
 
@@ -77,24 +76,6 @@
       thumb.addEventListener('click', function () { showImage(idx); });
       lbThumbs.appendChild(thumb);
     });
-  }
-
-  /* Scroll hint: hide after first scroll */
-  if (scrollHint) {
-    let hidden = false;
-    gallery.addEventListener('scroll', function () {
-      if (!hidden && gallery.scrollLeft > 30) {
-        hidden = true;
-        scrollHint.classList.add('hidden');
-      }
-    }, { passive: true });
-    // Also hide on window scroll (mobile vertical layout)
-    window.addEventListener('scroll', function () {
-      if (!hidden && window.scrollY > 30) {
-        hidden = true;
-        scrollHint.classList.add('hidden');
-      }
-    }, { passive: true });
   }
 
   /* Preload neighbors */

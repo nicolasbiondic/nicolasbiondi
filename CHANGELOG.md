@@ -45,6 +45,41 @@ authorship. Newest entries on top.
   `cursor.js`'s magnetic-wiggle target list, and the
   `.nicol-boom` mobile `display:none` override are gone.
 
+### Removed (portfolio)
+- **Scroll hint ("→ desplazar").** The fixed bottom-right cue on the
+  portfolio home had `pointer-events: none` — purely decorative, but
+  it read like a CTA that did nothing when clicked. Removed across
+  all three layers: the `<div class="scroll-hint">` markup in
+  `index.html`, the `.scroll-hint` / `.scroll-hint-arrow` rule group
+  + the mobile `display:none` override in `portfolio.css`, and the
+  `scrollHint` const + the "hide after first scroll" listener block
+  in `portfolio.js`. The horizontal-scroll gallery still works — the
+  hint was never required to operate it.
+
+### Removed — dead code (portfolio, found via audit-dead-code skill)
+- **`@keyframes scaleIn`** in `portfolio.css` — defined once, never
+  referenced by any `animation:` declaration anywhere. Deleted.
+- A parallel 3-agent dead-code audit (unused CSS selectors,
+  `portfolio.js` reachability, HTML orphaned refs) confirmed the rest
+  of the portfolio is clean: every other class/id is referenced
+  (statically or via JS `classList`), no unreachable code, no
+  orphaned asset references, no dead internal links, no commented-out
+  markup.
+
+### Fixed (portfolio accessibility)
+- **12 broken skip-links.** The sub-gallery project pages
+  (`personal/*`, `comercial/*`, `eventos/*`) had
+  `<a class="skip-link" href="#main">` but their `<main>` carries
+  `id="gallery"`, so "Ir al contenido" jumped nowhere. Pointed them
+  at `#gallery` to match. The home and the 8 root pages were already
+  correct (`#gallery`/`#main` respectively) and were left untouched.
+
+### Known / not changed
+- `contacto.html` still posts to `https://formspree.io/f/placeholder`
+  — a placeholder endpoint. Left as-is because the real Formspree
+  form id is needed to fix it (can't be guessed). Flagged for the
+  owner.
+
 ### Changed (portfolio)
 - **Project breadcrumb typography.** Was `text-transform:
   uppercase; letter-spacing: 0.1em; font-size: 0.7rem; color:
