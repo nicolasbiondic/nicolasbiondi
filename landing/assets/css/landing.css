@@ -173,16 +173,21 @@ a:hover { color: #fff; }
   text-align: center;
   box-shadow: 0 8px 48px rgba(0,0,0,0.5);
   overflow-y: auto;
+  /* If the card ever scrolls, reserve symmetric gutters so the
+     scrollbar doesn't push the content off-center.                  */
+  scrollbar-gutter: stable both-edges;
   scrollbar-width: thin;
   scrollbar-color: var(--accent) transparent;
 }
 
-/* Tighter on short laptop screens (≤ 920 px tall: 13-15" MacBook,
+/* Tighter on short laptop screens (≤ 990 px tall: 13-15" MacBook,
    1280×800 / 1366×768 / 1440×900 PC laptops, etc). Trims vertical
    padding, collapses the social links to icon-only circles, drops
    section labels and the bio's leading paragraph so the entire card
-   — including the contact CTA — fits without internal scroll.       */
-@media (min-width: 769px) and (max-height: 920px) {
+   — including the contact CTA — fits without internal scroll.
+   990 px = full card height (~763 px) + the 14em (224 px) breathing
+   room .card reserves; below that the full layout would scroll.     */
+@media (min-width: 769px) and (max-height: 990px) {
   .card           { padding: 1.5em 2.75em; max-height: calc(100vh - 11em); }
   .avatar-outer   { margin-bottom: 0.5em; }
   .avatar-wrap    { width: 56px; height: 56px; }
@@ -557,45 +562,35 @@ a:hover { color: #fff; }
 
 /* --- Portfolio CTA — primary action inside the card ---------- */
 /* Sits inside the card flow between Proyectos and the contact CTA.
-   Visually a pill button with the same scale as .social-btn but
-   slightly more weight (own block, full-width-ish, accent on hover)
-   to read as the primary "where to go next" action.               */
+   A quiet uppercase text link in the card's accent color, with a
+   subtle underline — matches the dim letter-spaced labels rather
+   than fighting them with a heavy pill button.                    */
 .portfolio-cta {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.7em;
-  margin: 1em auto 0.5em;
-  padding: 0.7em 1.6em;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 0.5em;
-  color: var(--title);
+  gap: 0.55em;
+  margin: 1.1em auto 0.3em;
+  padding: 0.2em 0.1em;
+  color: var(--accent);
   font-family: var(--font);
-  font-size: 0.78em;
+  font-size: 0.72em;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  transition:
-    background .3s ease,
-    border-color .3s ease,
-    color .3s ease,
-    transform .3s ease,
-    box-shadow .3s ease;
+  border-bottom: 1px solid rgba(26, 182, 255, 0.3);
+  opacity: 0.85;
+  transition: opacity .3s ease, border-color .3s ease;
 }
 
 .portfolio-cta:hover {
-  background: var(--accent);
+  opacity: 1;
   border-color: var(--accent);
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(26,182,255,0.35);
 }
 
 .portfolio-cta i {
-  font-size: 0.85em;
+  font-size: 0.9em;
   transition: transform .3s ease;
 }
 
@@ -649,7 +644,7 @@ a:hover { color: #fff; }
   .deco-circle-1, .deco-circle-2, .deco-circle-3 { display: none; }
   .dot-grid { display: none; }
   .bg-blobs { opacity: 0.6; }
-  .portfolio-cta { font-size: 0.72em; padding: 0.6em 1.3em; }
+  .portfolio-cta { font-size: 0.68em; }
 
   /* Wrapper: centered, scrollable if card overflows */
   .nicol {
